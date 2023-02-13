@@ -1,0 +1,49 @@
+[name]
+VixDiskLib_EndAccess
+
+[description]
+[code]
+VixError
+VixDiskLib_EndAccess(const VixDiskLibConnectParams *connectParams,
+                     const char *identity);
+[endcode]
+
+This function is used to notify the host of a virtual machine that the virtual
+machine disks are closed and that the operations which rely on the virtual
+machine disks to be closed can now be allowed.
+
+This must be called after closing all of the disk belonging to the virtual
+machine, and after deleting the snapshot of the virtual machine.
+
+Normally, this function is called after previously calling
+VixDiskLib_PrepareForAccess, but it may be called as a matter of cleaning up
+after a program crash.
+
+See also VixDiskLib_PrepareForAccess().
+
+[parameters]
+   connectParams - A struct containing the parameters to establish a connection.
+   identity - An arbitrary string identifying the application.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* The connection parameters must always indicate one virtual machine.
+* To resume operations after closing a managed disk, provide valid credentials
+  for an ESX server or Virtual Center that can access the virtual machine
+  belonging to that disk.
+
+[example]
+[code]
+   VixError vixError;
+   VixDiskLibConnectParams cnxParams = {0};
+   cnxParams.vmName = NULL;
+   cnxParams.serverName = hostName;
+   cnxParams.credType = VIXDISKLIB_CRED_UID;
+   cnxParams.creds.uid.userName = userName;
+   cnxParams.creds.uid.password = password;
+   cnxParams.port = port;
+   vixError = VixDiskLib_EndAccess(&cnxParams, "myApp");
+[endcode]
+

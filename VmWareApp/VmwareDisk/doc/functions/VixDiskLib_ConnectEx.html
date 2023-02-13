@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_ConnectEx</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_ConnectEx(const VixDiskLibConnectParams *connectParams,
+                     Bool readOnly,
+                     const char *snapshotRef,
+                     const char *transportModes,
+                     VixDiskLibConnection *connection);
+</pre>
+<p>
+Create a transport context to access disks belonging to a
+particular snapshot of a particular virtual machine. Using this
+transport context enables callers to open virtual disks using
+the most efficient data access protocol available for managed
+virtual machines, for improved I/O performance.
+<p>
+If you use this call instead of VixDiskLib_Connect(), the additional
+information passed in helps optimize the I/O access path to maximize I/O throughput.
+<p>
+This function opens a connection to VixDiskLib. You can use this connection to
+later request various services from VixDiskLib.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connectParams</i></dt>
+<dd>
+A structure containing the parameters to establish a connection:
+<ul>
+<li> vmxSpec - a managed object ID string specifying the VM, in the form "moref=&lt;moid&gt;"
+<li> serverName - host name or IP address of ESX/ESXi or vCenter Server
+<li> credType - VIXDISKLIB_CRED_UID, VIXDISKLIB_CRED_SESSIONID, VIXDISKLIB_CRED_TICKETID,
+or VIXDISKLIB_CRED_SSPI
+<li> creds - union to hold credentials: userName/password for UID, cookie/userName/key for others
+<li> port - port number to connect through
+</ul>
+</dd>
+<dt><i>readOnly</i></dt>
+<dd>
+Should be set to TRUE if no write access is needed
+             for the disks to be accessed through this connection. In
+             some cases, a more efficient I/O path can be used for read-only access.
+</dd>
+<dt><i>snapshotRef</i></dt>
+<dd>
+A managed object reference to the snapshot of the virtual
+             machine whose disks will be accessed with this connection.
+             Specifying this property is only meaningful if the vmxSpec
+             property in connectParams is set as well.
+</dd>
+<dt><i>transportModes</i></dt>
+<dd>
+An optional list of transport modes that can be
+            used for this connection, separated by colons. If you specify NULL
+            specified (recommended), VixDiskLib's default setting is used.
+            The default setting corresponds to the string
+            returned by VixDiskLib_ListTransportModes().
+<p>
+            If a disk is opened through this connection, VixDiskLib
+            starts with the first entry of the list and attempts to
+            use this transport mode to gain access to the virtual
+            disk. If this does not work, the next item in the list
+            is tried until either the disk is successfully opened
+            or the end of the list is reached.
+</dd>
+<dt><i>connection</i></dt>
+<dd>
+A handle for the connection. This is an output parameter.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> To create a connection to open a managed disk, provide valid credentials for
+the ESX server that currently hosts the virtual machine owning the virtual disk,
+or the managing vCenter Server.
+<li> To create a connection that can open hosted type disks, use null values for
+vmname, hostname, username, password and port.
+This is sufficient to establish a connection to the localhost.
+For hosted type disks, this call is equivalent to using VixDiskLib_Connect().
+<li> This function blocks until the connection completes.
+<li> Every call to VixDiskLib_ConnectEx() should have a matching
+VixDiskLib_Disconnect().
+<li> When using VixDiskLib_ConnectEx(), some state might have not been cleaned
+up if the resulting connection was not shut down cleanly. Use
+VixDiskLib_Cleanup() to remove this extra state.
+</ul>
+<h1>Example</h1>
+<pre>
+   VixDiskLibConnectParams cnxParams = {0};
+   if (appGlobals.isRemote) {
+      cnxParams.vmxSpec = moid-str;
+      cnxParams.serverName = hostName;
+      cnxParams.credType = VIXDISKLIB_CRED_UID;
+      cnxParams.creds.uid.userName = userName;
+      cnxParams.creds.uid.password = password;
+      cnxParams.port = port;
+   }
+   VixError vixError = VixDiskLib_ConnectEx(&cnxParams,
+                                            TRUE,
+                                            "snapshot-47",
+                                            "san:nbd:file",
+                                            &connection);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

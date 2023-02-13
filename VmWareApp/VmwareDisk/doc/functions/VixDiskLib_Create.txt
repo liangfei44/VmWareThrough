@@ -1,0 +1,44 @@
+[name]
+VixDiskLib_Create
+
+[description]
+[code]
+VixError
+VixDiskLib_Create(const VixDiskLibConnection connection,
+                  const char *path,
+                  const VixDiskLibCreateParams *createParams,
+                  VixDiskLibProgressFunc progressFunc,
+                  void *progressCallbackData);
+
+[endcode]
+This function creates a virtual disk as specified in createParams.
+
+[parameters]
+   connection - A valid VixDiskLib connection created to manipulate hosted 
+     disks. See VixDiskLib_Connect() for instructions on how to create
+     such a connection.
+   path - Path name for the newly created Virtual Disk file.
+   createParams - Specification for the new Virtual Disk.
+   progressFunc - A pointer to a function of type VixDiskLibProgressFunc.
+     VixDiskLib will call this function periodically to update progress.
+   progressCallbackData - Opaque data that VixDiskLib will pass to
+     progressFunc.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* VixDiskLib_Create() can or create managed disks on a datastore location.
+  To create such a disk, first create a hosted type disk and use
+  VixDiskLib_Clone() to convert the virtual disk to a managed disk.
+
+[example]
+[code]
+   VixError vixError = VixDiskLib_Create(appGlobals.connection, 
+                                         appGlobals.diskPath, 
+                                         &createParams,
+                                         NULL,
+                                         NULL);
+
+[endcode]
+

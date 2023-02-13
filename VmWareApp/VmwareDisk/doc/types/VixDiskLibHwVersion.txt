@@ -1,0 +1,41 @@
+[name]
+VixDiskLibHwVersion
+
+[description]
+Type of virtual hardware version.
+
+The properties of a virtual machine include a virtual hardware version
+that encapsulates the capabilities of a virtual machine.
+VMware products generally support the current and the previous virtual hardware versions.
+You should upgrade virtual machines older than the previous virtual hardware version
+so they continue to run.
+
+[values]
+VIXDISKLIB_HWVERSION_WORKSTATION_4 - (3) VMware Workstation 4.x and GSX Server 3.x
+VIXDISKLIB_HWVERSION_WORKSTATION_5 - (4) VMware Workstation 5.x and VMware Server 1.0.x
+VIXDISKLIB_HWVERSION_ESX30 - (4) VMware ESX 3.0 and 3.5, same type as above
+VIXDISKLIB_HWVERSION_WORKSTATION_6 - (6) VMware Workstation 6.0.x and VMware Server 2.0
+
+[remarks]
+* VMware Workstation 6.5 and ESX/ESXi 4.x (and later) use virtual hardware version 7
+  for hot-plug devices.
+* Currently the default is VIXDISKLIB_HWVERSION_WORKSTATION_6,
+  although this could change.
+* Virtual hardware version 5 was never public.
+
+[example]
+[code]
+   VixDiskLibCreateParams createParams;
+
+   createParams.adapterType = VIXDISKLIB_ADAPTER_SCSI_LSILOGIC;
+   createParams.capacity = 204800;
+   createParams.diskType = VIXDISKLIB_DISK_MONOLITHIC_SPARSE;
+   createParams.hwVersion = VIXDISKLIB_HWVERSION_WORKSTATION_6;
+   VixError vixError = VixDiskLib_Create(appGlobals.connection,
+                                appGlobals.diskPath,
+                                &createParams,
+                                NULL,
+                                NULL);
+   CHECK_AND_THROW(vixError);
+[endcode]
+

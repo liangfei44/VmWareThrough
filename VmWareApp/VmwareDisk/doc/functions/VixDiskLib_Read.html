@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Read</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Read(VixDiskLibHandle diskHandle,
+                VixDiskLibSectorType startSector,
+                VixDiskLibSectorType numSectors,
+                uint8 *readBuffer);
+</pre>
+<p>
+This function reads a range of sectors from an open virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+<dt><i>startSector</i></dt>
+<dd>
+Beginning sector number.
+</dd>
+<dt><i>numSectors</i></dt>
+<dd>
+Number of sectors to read.
+</dd>
+<dt><i>readBuffer</i></dt>
+<dd>
+Buffer to read the sectors into.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> This function reads the sector data synchronously.
+</ul>
+<h1>Example</h1>
+<pre>
+   for (i = 0; i &lt; appGlobals.numSectors; i++) {
+      VixError vixError = VixDiskLib_Read(disk.Handle(),
+                                          appGlobals.startSector + i,
+                                          1,
+                                          buf);
+      CHECK_AND_THROW(vixError);
+      MyValidateFunc(buf, sizeof buf, 16);
+   }
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

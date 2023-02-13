@@ -1,0 +1,22 @@
+[name]
+VixDiskLib_Disconnect
+
+[description]
+[code]
+VixError
+VixDiskLib_Disconnect(VixDiskLibConnection connection);
+[endcode]
+
+This function destroys the connection.
+
+[parameters]
+   connection - Handle to an open vixDiskLib connection.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[example]
+[code]
+   VixDiskLib_Disconnect(srcConnection);
+[endcode]
+

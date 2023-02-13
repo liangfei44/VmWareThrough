@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_GetTransportMode</b>
+<h1>Description</h1>
+<pre>
+const char *
+VixDiskLib_GetTransportMode(VixDiskLibHandle diskHandle);
+</pre>
+<p>
+Returns a pointer to a static string identifying the transport mode that
+is used to access the virtual disk's data.
+<p>
+If a disk was opened through a connection obtained by VixDiskLib_Connect(),
+the return value is "file" for a hosted disk and "nbd" for a managed disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+</dl>
+<h1>Return Value</h1>
+Returns a static string identifying the transport mode used to open the disk.
+Returns NULL if diskHandle is a NULL handle.
+<h1>Remarks</h1>
+<ul>
+<li> A list of known transport modes is returned by VixDiskLib_ListTransportModes().
+<li> The "file" and "nbd" modes are built into VixDiskLib so they are always recognized.
+<li> Calling VixDiskLib_ConnectEx() instead of VixDiskLib_Connect() enables a wider range
+of transport modes, some of which result in better I/O performance when accessing
+managed disks on shared storage or when running inside a virtual machine.
+</ul>
+<h1>Example</h1>
+<pre>
+   printf("Using transport mode: %s\n", VixDiskLib_GetTransportMode(diskHandle));
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

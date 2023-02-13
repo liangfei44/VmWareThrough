@@ -1,0 +1,28 @@
+[name]
+VixDiskLib_Attach
+
+[description]
+[code]
+VixError
+VixDiskLib_Attach(VixDiskLibHandle parentHandle, VixDiskLibHandle childHandle);
+[endcode]
+
+This function attaches the child disk chain to the parent disk chain. 
+ The parent disk handle is invalid after attaching. The child handle
+ represents the combined disk chain.
+
+[parameters]
+   parentDiskHandle - Handle to the parent virtual disk chain. 
+   childDiskHandle - Handle to the child virtual disk chain. 
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* Do not use the parentDiskhandle after the call to VixDiskLib_Attach().
+
+[example]
+[code]
+   vixError = VixDiskLib_Attach(parent.Handle(), child.Handle());
+[endcode]
+

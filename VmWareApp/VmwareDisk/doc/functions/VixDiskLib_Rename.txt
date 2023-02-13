@@ -1,0 +1,25 @@
+[name]
+VixDiskLib_Rename
+
+[description]
+[code]
+VixError
+VixDiskLib_Rename(const char *srcFileName
+                  const char *dstFileName);
+[endcode]
+
+Renames a virtual disk.
+
+[parameters]
+   srcFileName - Original path name for the virtual disk to be renamed.
+   dstFileName - New name for the virtual disk.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[example]
+[code]
+   vixError = VixDiskLib_Rename(oldGlobals.diskpath,
+                                newGlobals.diskpath);
+[endcode]
+

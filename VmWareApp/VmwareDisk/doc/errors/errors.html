@@ -1,0 +1,552 @@
+<html>
+<head>
+<link rel="stylesheet" href="foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+		<h1>Error Codes</h1>
+
+		<dl>
+			<dt id="VIX_OK">0 &ndash; <i>VIX_OK</i></dt>
+			<dd>The operation was successful.</dd><br />
+			<dt id="VIX_E_FAIL">1 &ndash; <i>VIX_E_FAIL</i></dt>
+			<dd>Unknown error.</dd><br />
+			<dt id="VIX_E_OUT_OF_MEMORY">2 &ndash; <i>VIX_E_OUT_OF_MEMORY</i></dt>
+			<dd>Memory allocation failed. Out of memory.</dd><br />
+			<dt id="VIX_E_INVALID_ARG">3 &ndash; <i>VIX_E_INVALID_ARG</i></dt>
+			<dd>One of the parameters was invalid.</dd><br />
+			<dt id="VIX_E_FILE_NOT_FOUND">4 &ndash; <i>VIX_E_FILE_NOT_FOUND</i></dt>
+			<dd>A file was not found.</dd><br />
+			<dt id="VIX_E_OBJECT_IS_BUSY">5 &ndash; <i>VIX_E_OBJECT_IS_BUSY</i></dt>
+			<dd>This function cannot be performed because the handle is executing another function.</dd><br />
+			<dt id="VIX_E_NOT_SUPPORTED">6 &ndash; <i>VIX_E_NOT_SUPPORTED</i></dt>
+			<dd>The operation is not supported.</dd><br />
+			<dt id="VIX_E_FILE_ERROR">7 &ndash; <i>VIX_E_FILE_ERROR</i></dt>
+			<dd>A file access error occurred on the host or guest operating system.</dd><br />
+			<dt id="VIX_E_DISK_FULL">8 &ndash; <i>VIX_E_DISK_FULL</i></dt>
+			<dd>An error occurred while writing a file; the disk is full. Data has not been saved. Free some disk space and try again.</dd><br />
+			<dt id="VIX_E_INCORRECT_FILE_TYPE">9 &ndash; <i>VIX_E_INCORRECT_FILE_TYPE</i></dt>
+			<dd>An error occurred while accessing a file: wrong file type.</dd><br />
+			<dt id="VIX_E_CANCELLED">10 &ndash; <i>VIX_E_CANCELLED</i></dt>
+			<dd>The operation was canceled.</dd><br />
+			<dt id="VIX_E_FILE_READ_ONLY">11 &ndash; <i>VIX_E_FILE_READ_ONLY</i></dt>
+			<dd>The file is write-protected.</dd><br />
+			<dt id="VIX_E_FILE_ALREADY_EXISTS">12 &ndash; <i>VIX_E_FILE_ALREADY_EXISTS</i></dt>
+			<dd>The file already exists.</dd><br />
+			<dt id="VIX_E_FILE_ACCESS_ERROR">13 &ndash; <i>VIX_E_FILE_ACCESS_ERROR</i></dt>
+			<dd>You do not have access rights to this file.</dd><br />
+			<dt id="VIX_E_REQUIRES_LARGE_FILES">14 &ndash; <i>VIX_E_REQUIRES_LARGE_FILES</i></dt>
+			<dd>The file system does not support large files.</dd><br />
+			<dt id="VIX_E_FILE_ALREADY_LOCKED">15 &ndash; <i>VIX_E_FILE_ALREADY_LOCKED</i></dt>
+			<dd>The file is already in use.</dd><br />
+			<dt id="VIX_E_VMDB">16 &ndash; <i>VIX_E_VMDB</i></dt>
+			<dd>The system returned an error. Communication with the virtual machine might have been interrupted.</dd><br />
+			<dt id="VIX_E_NOT_SUPPORTED_ON_REMOTE_OBJECT">20 &ndash; <i>VIX_E_NOT_SUPPORTED_ON_REMOTE_OBJECT</i></dt>
+			<dd>The command is not supported on remote objects.</dd><br />
+			<dt id="VIX_E_FILE_TOO_BIG">21 &ndash; <i>VIX_E_FILE_TOO_BIG</i></dt>
+			<dd>The file is too large for the file system.</dd><br />
+			<dt id="VIX_E_FILE_NAME_INVALID">22 &ndash; <i>VIX_E_FILE_NAME_INVALID</i></dt>
+			<dd>The file name is not valid.</dd><br />
+			<dt id="VIX_E_ALREADY_EXISTS">23 &ndash; <i>VIX_E_ALREADY_EXISTS</i></dt>
+			<dd>Already exists.</dd><br />
+			<dt id="VIX_E_BUFFER_TOOSMALL">24 &ndash; <i>VIX_E_BUFFER_TOOSMALL</i></dt>
+			<dd>Buffer is too small.</dd><br />
+			<dt id="VIX_E_OBJECT_NOT_FOUND">25 &ndash; <i>VIX_E_OBJECT_NOT_FOUND</i></dt>
+			<dd>The request refers to an object that does not exist.</dd><br />
+			<dt id="VIX_E_HOST_NOT_CONNECTED">26 &ndash; <i>VIX_E_HOST_NOT_CONNECTED</i></dt>
+			<dd>Unable to connect to the host.</dd><br />
+			<dt id="VIX_E_INVALID_UTF8_STRING">8 &ndash; <i>VIX_E_INVALID_UTF8_STRING</i></dt>
+			<dd>The string parameter has incorrect encoding.</dd><br />
+			<dt id="VIX_E_OPERATION_ALREADY_IN_PROGRESS">31 &ndash; <i>VIX_E_OPERATION_ALREADY_IN_PROGRESS</i></dt>
+			<dd>The operation is already in progress.</dd><br />
+			<dt id="VIX_E_UNFINISHED_JOB">29 &ndash; <i>VIX_E_UNFINISHED_JOB</i></dt>
+			<dd>The job has not finished.</dd><br />
+			<dt id="VIX_E_NEED_KEY">30 &ndash; <i>VIX_E_NEED_KEY</i></dt>
+			<dd>A decryption key is required to perform the operation.</dd><br />
+			<dt id="VIX_E_LICENSE">32 &ndash; <i>VIX_E_LICENSE</i></dt>
+			<dd>This operation is not supported with the current license.</dd><br />
+			<dt id="VIX_E_VM_HOST_DISCONNECTED">34 &ndash; <i>VIX_E_VM_HOST_DISCONNECTED</i></dt>
+			<dd>Unable to communicate with the virtual machine's host because it is disconnected.</dd><br />
+			<dt id="VIX_E_AUTHENTICATION_FAIL">35 &ndash; <i>VIX_E_AUTHENTICATION_FAIL</i></dt>
+			<dd>Authentication for encrypted virtual machine failed.</dd><br />
+			<dt id="VIX_E_HOST_CONNECTION_LOST">36 &ndash; <i>VIX_E_HOST_CONNECTION_LOST</i></dt>
+			<dd>The connection to the host was lost.</dd><br />
+			<dt id="VIX_E_DUPLICATE_NAME">41 &ndash; <i>VIX_E_DUPLICATE_NAME</i></dt>
+			<dd>Another object is using this name.</dd><br />
+			<dt id="VIX_E_ARGUMENT_TOO_BIG">44 &ndash; <i>VIX_E_ARGUMENT_TOO_BIG</i></dt>
+			<dd>One of the specified arguments is too large.</dd><br />
+			<dt id="VIX_E_INVALID_HANDLE">1000 &ndash; <i>VIX_E_INVALID_HANDLE</i></dt>
+			<dd>The handle is not a valid VIX object.</dd><br />
+			<dt id="VIX_E_NOT_SUPPORTED_ON_HANDLE_TYPE">1001 &ndash; <i>VIX_E_NOT_SUPPORTED_ON_HANDLE_TYPE</i></dt>
+			<dd>The operation is not supported on this type of handle.</dd><br />
+			<dt id="VIX_E_TOO_MANY_HANDLES">1002 &ndash; <i>VIX_E_TOO_MANY_HANDLES</i></dt>
+			<dd>Too many handles are open.</dd><br />
+			<dt id="VIX_E_NOT_FOUND">2000 &ndash; <i>VIX_E_NOT_FOUND</i></dt>
+			<dd>Invalid file. A required section of the file is missing.</dd><br />
+			<dt id="VIX_E_TYPE_MISMATCH">2001 &ndash; <i>VIX_E_TYPE_MISMATCH</i></dt>
+			<dd>Invalid file. An object has the wrong type.</dd><br />
+			<dt id="VIX_E_INVALID_XML">2002 &ndash; <i>VIX_E_INVALID_XML</i></dt>
+			<dd>Invalid file. The contents might be corrupt.</dd><br />
+			<dt id="VIX_E_TIMEOUT_WAITING_FOR_TOOLS">3000 &ndash; <i>VIX_E_TIMEOUT_WAITING_FOR_TOOLS</i></dt>
+			<dd>A timeout error occurred while waiting for .</dd><br />
+			<dt id="VIX_E_UNRECOGNIZED_COMMAND">3001 &ndash; <i>VIX_E_UNRECOGNIZED_COMMAND</i></dt>
+			<dd>The command is not recognized by the virtual machine.</dd><br />
+			<dt id="VIX_E_OP_NOT_SUPPORTED_ON_GUEST">3003 &ndash; <i>VIX_E_OP_NOT_SUPPORTED_ON_GUEST</i></dt>
+			<dd>The requested operation is not supported on this guest operating system.</dd><br />
+			<dt id="VIX_E_PROGRAM_NOT_STARTED">3004 &ndash; <i>VIX_E_PROGRAM_NOT_STARTED</i></dt>
+			<dd>A program could not run on the guest operating system.</dd><br />
+			<dt id="VIX_E_CANNOT_START_READ_ONLY_VM">3005 &ndash; <i>VIX_E_CANNOT_START_READ_ONLY_VM</i></dt>
+			<dd>Cannot power on a read-only virtual machine.</dd><br />
+			<dt id="VIX_E_VM_NOT_RUNNING">3006 &ndash; <i>VIX_E_VM_NOT_RUNNING</i></dt>
+			<dd>The virtual machine needs to be powered on.</dd><br />
+			<dt id="VIX_E_VM_IS_RUNNING">3007 &ndash; <i>VIX_E_VM_IS_RUNNING</i></dt>
+			<dd>The virtual machine should not be powered on. It is already running.</dd><br />
+			<dt id="VIX_E_CANNOT_CONNECT_TO_VM">3008 &ndash; <i>VIX_E_CANNOT_CONNECT_TO_VM</i></dt>
+			<dd>Cannot connect to the virtual machine.</dd><br />
+			<dt id="VIX_E_POWEROP_SCRIPTS_NOT_AVAILABLE">3009 &ndash; <i>VIX_E_POWEROP_SCRIPTS_NOT_AVAILABLE</i></dt>
+			<dd>Cannot execute scripts.</dd><br />
+			<dt id="VIX_E_NO_GUEST_OS_INSTALLED">3010 &ndash; <i>VIX_E_NO_GUEST_OS_INSTALLED</i></dt>
+			<dd>There is no operating system installed in the virtual machine.</dd><br />
+			<dt id="VIX_E_VM_INSUFFICIENT_HOST_MEMORY">3011 &ndash; <i>VIX_E_VM_INSUFFICIENT_HOST_MEMORY</i></dt>
+			<dd>Not enough physical memory is available to power on this virtual machine.</dd><br />
+			<dt id="VIX_E_SUSPEND_ERROR">3012 &ndash; <i>VIX_E_SUSPEND_ERROR</i></dt>
+			<dd>An error occurred while suspending the virtual machine.</dd><br />
+			<dt id="VIX_E_VM_NOT_ENOUGH_CPUS">3013 &ndash; <i>VIX_E_VM_NOT_ENOUGH_CPUS</i></dt>
+			<dd>This virtual machine is configured to run with 2 CPUs, but the host has only 1 CPU. The virtual machine cannot be powered on.</dd><br />
+			<dt id="VIX_E_HOST_USER_PERMISSIONS">3014 &ndash; <i>VIX_E_HOST_USER_PERMISSIONS</i></dt>
+			<dd>Insufficient permissions in the host operating system.</dd><br />
+			<dt id="VIX_E_GUEST_USER_PERMISSIONS">3015 &ndash; <i>VIX_E_GUEST_USER_PERMISSIONS</i></dt>
+			<dd>Authentication failure or insufficient permissions in guest operating system.</dd><br />
+			<dt id="VIX_E_TOOLS_NOT_RUNNING">3016 &ndash; <i>VIX_E_TOOLS_NOT_RUNNING</i></dt>
+			<dd> are not running in the guest.</dd><br />
+			<dt id="VIX_E_GUEST_OPERATIONS_PROHIBITED">3017 &ndash; <i>VIX_E_GUEST_OPERATIONS_PROHIBITED</i></dt>
+			<dd>Guest operations are not allowed on this virtual machine.</dd><br />
+			<dt id="VIX_E_ANON_GUEST_OPERATIONS_PROHIBITED">3018 &ndash; <i>VIX_E_ANON_GUEST_OPERATIONS_PROHIBITED</i></dt>
+			<dd>Anonymous guest operations are not allowed on this virtual machine. You must call VixVM_LoginInGuest before performing guest operations.</dd><br />
+			<dt id="VIX_E_ROOT_GUEST_OPERATIONS_PROHIBITED">3019 &ndash; <i>VIX_E_ROOT_GUEST_OPERATIONS_PROHIBITED</i></dt>
+			<dd>Guest operations are not allowed for the administrative user on this virtual machine.</dd><br />
+			<dt id="VIX_E_MISSING_ANON_GUEST_ACCOUNT">3023 &ndash; <i>VIX_E_MISSING_ANON_GUEST_ACCOUNT</i></dt>
+			<dd>The virtual machine configuration must specify the guest account name to be used for anonymous guest operations.</dd><br />
+			<dt id="VIX_E_CANNOT_AUTHENTICATE_WITH_GUEST">3024 &ndash; <i>VIX_E_CANNOT_AUTHENTICATE_WITH_GUEST</i></dt>
+			<dd>The virtual machine cannot authenticate users with guest.</dd><br />
+			<dt id="VIX_E_UNRECOGNIZED_COMMAND_IN_GUEST">3025 &ndash; <i>VIX_E_UNRECOGNIZED_COMMAND_IN_GUEST</i></dt>
+			<dd>The command is not recognized by .</dd><br />
+			<dt id="VIX_E_CONSOLE_GUEST_OPERATIONS_PROHIBITED">3026 &ndash; <i>VIX_E_CONSOLE_GUEST_OPERATIONS_PROHIBITED</i></dt>
+			<dd>Guest operations are not allowed for console users on this virtual machine.</dd><br />
+			<dt id="VIX_E_MUST_BE_CONSOLE_USER">3027 &ndash; <i>VIX_E_MUST_BE_CONSOLE_USER</i></dt>
+			<dd>Only the console user can run the command.</dd><br />
+			<dt id="VIX_E_VMX_MSG_DIALOG_AND_NO_UI">3028 &ndash; <i>VIX_E_VMX_MSG_DIALOG_AND_NO_UI</i></dt>
+			<dd>The virtual machine is blocked waiting for a user operation.</dd><br />
+			<dt id="VIX_E_NOT_ALLOWED_DURING_VM_RECORDING">3029 &ndash; <i>VIX_E_NOT_ALLOWED_DURING_VM_RECORDING</i></dt>
+			<dd>Not allowed while the virtual machine is recording.</dd><br />
+			<dt id="VIX_E_NOT_ALLOWED_DURING_VM_REPLAY">3030 &ndash; <i>VIX_E_NOT_ALLOWED_DURING_VM_REPLAY</i></dt>
+			<dd>Not allowed while the virtual machine is replaying.</dd><br />
+			<dt id="VIX_E_OPERATION_NOT_ALLOWED_FOR_LOGIN_TYPE">3031 &ndash; <i>VIX_E_OPERATION_NOT_ALLOWED_FOR_LOGIN_TYPE</i></dt>
+			<dd>The command is not allowed by this login type.</dd><br />
+			<dt id="VIX_E_LOGIN_TYPE_NOT_SUPPORTED">3032 &ndash; <i>VIX_E_LOGIN_TYPE_NOT_SUPPORTED</i></dt>
+			<dd>This login type is not supported.</dd><br />
+			<dt id="VIX_E_EMPTY_PASSWORD_NOT_ALLOWED_IN_GUEST">3033 &ndash; <i>VIX_E_EMPTY_PASSWORD_NOT_ALLOWED_IN_GUEST</i></dt>
+			<dd>The guest OS does not support empty passwords.</dd><br />
+			<dt id="VIX_E_INTERACTIVE_SESSION_NOT_PRESENT">3034 &ndash; <i>VIX_E_INTERACTIVE_SESSION_NOT_PRESENT</i></dt>
+			<dd>The specified guest user must be logged in interactively to perform this operation.</dd><br />
+			<dt id="VIX_E_INTERACTIVE_SESSION_USER_MISMATCH">3035 &ndash; <i>VIX_E_INTERACTIVE_SESSION_USER_MISMATCH</i></dt>
+			<dd>The specified guest user does not match the user currently logged in interactively.</dd><br />
+			<dt id="VIX_E_UNABLE_TO_REPLAY_VM">3039 &ndash; <i>VIX_E_UNABLE_TO_REPLAY_VM</i></dt>
+			<dd>Unable to replay the virtual machine.</dd><br />
+			<dt id="VIX_E_CANNOT_POWER_ON_VM">3041 &ndash; <i>VIX_E_CANNOT_POWER_ON_VM</i></dt>
+			<dd>The virtual machine could not start.</dd><br />
+			<dt id="VIX_E_NO_DISPLAY_SERVER">3043 &ndash; <i>VIX_E_NO_DISPLAY_SERVER</i></dt>
+			<dd>Cannot launch the UI because no display server is present in the current environment.</dd><br />
+			<dt id="VIX_E_VM_NOT_RECORDING">3044 &ndash; <i>VIX_E_VM_NOT_RECORDING</i></dt>
+			<dd>The operation failed because the virtual machine is not recording.</dd><br />
+			<dt id="VIX_E_VM_NOT_REPLAYING">3045 &ndash; <i>VIX_E_VM_NOT_REPLAYING</i></dt>
+			<dd>The operation failed because the virtual machine is not replaying.</dd><br />
+			<dt id="VIX_E_TOO_MANY_LOGONS">3046 &ndash; <i>VIX_E_TOO_MANY_LOGONS</i></dt>
+			<dd>The supported number of active authentication sessions has been exceeded.</dd><br />
+			<dt id="VIX_E_INVALID_AUTHENTICATION_SESSION">3047 &ndash; <i>VIX_E_INVALID_AUTHENTICATION_SESSION</i></dt>
+			<dd>The authenticaton session provided does not exist.</dd><br />
+			<dt id="VIX_E_VM_NOT_FOUND">4000 &ndash; <i>VIX_E_VM_NOT_FOUND</i></dt>
+			<dd>The virtual machine cannot be found.</dd><br />
+			<dt id="VIX_E_NOT_SUPPORTED_FOR_VM_VERSION">4001 &ndash; <i>VIX_E_NOT_SUPPORTED_FOR_VM_VERSION</i></dt>
+			<dd>The operation is not supported for this virtual machine version.</dd><br />
+			<dt id="VIX_E_CANNOT_READ_VM_CONFIG">4002 &ndash; <i>VIX_E_CANNOT_READ_VM_CONFIG</i></dt>
+			<dd>Cannot read the virtual machine configuration file.</dd><br />
+			<dt id="VIX_E_TEMPLATE_VM">4003 &ndash; <i>VIX_E_TEMPLATE_VM</i></dt>
+			<dd>Cannot perform this operation on a template virtual machine.</dd><br />
+			<dt id="VIX_E_VM_ALREADY_LOADED">4004 &ndash; <i>VIX_E_VM_ALREADY_LOADED</i></dt>
+			<dd>The virtual machine has already been loaded.</dd><br />
+			<dt id="VIX_E_VM_ALREADY_UP_TO_DATE">4006 &ndash; <i>VIX_E_VM_ALREADY_UP_TO_DATE</i></dt>
+			<dd>The virtual machine is already up-to-date.</dd><br />
+			<dt id="VIX_E_VM_UNSUPPORTED_GUEST">4011 &ndash; <i>VIX_E_VM_UNSUPPORTED_GUEST</i></dt>
+			<dd>The specified guest operating system is not supported on the host that is the target of the operation.</dd><br />
+			<dt id="VIX_E_UNRECOGNIZED_PROPERTY">6000 &ndash; <i>VIX_E_UNRECOGNIZED_PROPERTY</i></dt>
+			<dd>Unrecognized handle property identifier.</dd><br />
+			<dt id="VIX_E_INVALID_PROPERTY_VALUE">6001 &ndash; <i>VIX_E_INVALID_PROPERTY_VALUE</i></dt>
+			<dd>Invalid property value.</dd><br />
+			<dt id="VIX_E_READ_ONLY_PROPERTY">6002 &ndash; <i>VIX_E_READ_ONLY_PROPERTY</i></dt>
+			<dd>Cannot change a read-only property.</dd><br />
+			<dt id="VIX_E_MISSING_REQUIRED_PROPERTY">6003 &ndash; <i>VIX_E_MISSING_REQUIRED_PROPERTY</i></dt>
+			<dd>This handle is missing a required property.</dd><br />
+			<dt id="VIX_E_INVALID_SERIALIZED_DATA">6004 &ndash; <i>VIX_E_INVALID_SERIALIZED_DATA</i></dt>
+			<dd>A serialized object is invalid and cannot be deserialized.</dd><br />
+			<dt id="VIX_E_PROPERTY_TYPE_MISMATCH">6005 &ndash; <i>VIX_E_PROPERTY_TYPE_MISMATCH</i></dt>
+			<dd>The data provided does not match the property type.</dd><br />
+			<dt id="VIX_E_BAD_VM_INDEX">8000 &ndash; <i>VIX_E_BAD_VM_INDEX</i></dt>
+			<dd>The index parameter does not correspond to a result set.</dd><br />
+			<dt id="VIX_E_INVALID_MESSAGE_HEADER">10000 &ndash; <i>VIX_E_INVALID_MESSAGE_HEADER</i></dt>
+			<dd>A message header was corrupted or has the incorrect version.</dd><br />
+			<dt id="VIX_E_INVALID_MESSAGE_BODY">10001 &ndash; <i>VIX_E_INVALID_MESSAGE_BODY</i></dt>
+			<dd>A message body was corrupted or is missing.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_INVAL">13000 &ndash; <i>VIX_E_SNAPSHOT_INVAL</i></dt>
+			<dd>A snapshot-related error has occurred.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_DUMPER">13001 &ndash; <i>VIX_E_SNAPSHOT_DUMPER</i></dt>
+			<dd>Unable to open the snapshot file.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_DISKLIB">13002 &ndash; <i>VIX_E_SNAPSHOT_DISKLIB</i></dt>
+			<dd>Disk error.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_NOTFOUND">13003 &ndash; <i>VIX_E_SNAPSHOT_NOTFOUND</i></dt>
+			<dd>The snapshot does not exist.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_EXISTS">13004 &ndash; <i>VIX_E_SNAPSHOT_EXISTS</i></dt>
+			<dd>The snapshot already exists.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_VERSION">13005 &ndash; <i>VIX_E_SNAPSHOT_VERSION</i></dt>
+			<dd>Snapshots are not allowed on this virtual machine.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_NOPERM">13006 &ndash; <i>VIX_E_SNAPSHOT_NOPERM</i></dt>
+			<dd>Insufficient permissions.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_CONFIG">13007 &ndash; <i>VIX_E_SNAPSHOT_CONFIG</i></dt>
+			<dd>There is an error in the configuration file.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_NOCHANGE">13008 &ndash; <i>VIX_E_SNAPSHOT_NOCHANGE</i></dt>
+			<dd>The state of the virtual machine has not changed since the last snapshot operation.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_CHECKPOINT">13009 &ndash; <i>VIX_E_SNAPSHOT_CHECKPOINT</i></dt>
+			<dd>Unable to save the snapshot file.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_LOCKED">13010 &ndash; <i>VIX_E_SNAPSHOT_LOCKED</i></dt>
+			<dd>A snapshot operation is already in progress.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_INCONSISTENT">13011 &ndash; <i>VIX_E_SNAPSHOT_INCONSISTENT</i></dt>
+			<dd>The snapshot files are in an inconsistent state.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_NAMETOOLONG">13012 &ndash; <i>VIX_E_SNAPSHOT_NAMETOOLONG</i></dt>
+			<dd>The filename is too long.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_VIXFILE">13013 &ndash; <i>VIX_E_SNAPSHOT_VIXFILE</i></dt>
+			<dd>Cannot snapshot all metadata files.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_DISKLOCKED">13014 &ndash; <i>VIX_E_SNAPSHOT_DISKLOCKED</i></dt>
+			<dd>One or more of the disks are busy.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_DUPLICATEDDISK">13015 &ndash; <i>VIX_E_SNAPSHOT_DUPLICATEDDISK</i></dt>
+			<dd>The virtual disk is used multiple times.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_INDEPENDENTDISK">13016 &ndash; <i>VIX_E_SNAPSHOT_INDEPENDENTDISK</i></dt>
+			<dd>Cannot take snapshots of powered on virtual machines with independent disks.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_NONUNIQUE_NAME">13017 &ndash; <i>VIX_E_SNAPSHOT_NONUNIQUE_NAME</i></dt>
+			<dd>The name does not uniquely identify one snapshot.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_MEMORY_ON_INDEPENDENT_DISK">13018 &ndash; <i>VIX_E_SNAPSHOT_MEMORY_ON_INDEPENDENT_DISK</i></dt>
+			<dd>Failed to take a memory snapshot because the virtual machine is configured with independent disks.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_MAXSNAPSHOTS">13019 &ndash; <i>VIX_E_SNAPSHOT_MAXSNAPSHOTS</i></dt>
+			<dd>Exceeded the maximum number of permitted snapshots.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_MIN_FREE_SPACE">13020 &ndash; <i>VIX_E_SNAPSHOT_MIN_FREE_SPACE</i></dt>
+			<dd>Available free space is less than the configured minimum free space.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_HIERARCHY_TOODEEP">13021 &ndash; <i>VIX_E_SNAPSHOT_HIERARCHY_TOODEEP</i></dt>
+			<dd>Snapshot hierarchy is too deep.</dd><br />
+			<dt id="VIX_E_SNAPSHOT_RRSUSPEND">13022 &ndash; <i>VIX_E_SNAPSHOT_RRSUSPEND</i></dt>
+			<dd>Snapshots are not allowed on .</dd><br />
+			<dt id="VIX_E_SNAPSHOT_NOT_REVERTABLE">13024 &ndash; <i>VIX_E_SNAPSHOT_NOT_REVERTABLE</i></dt>
+			<dd>Cannot revert. The snapshot is .</dd><br />
+			<dt id="VIX_E_HOST_DISK_INVALID_VALUE">14003 &ndash; <i>VIX_E_HOST_DISK_INVALID_VALUE</i></dt>
+			<dd>The specified device is not a valid physical disk device.</dd><br />
+			<dt id="VIX_E_HOST_DISK_SECTORSIZE">14004 &ndash; <i>VIX_E_HOST_DISK_SECTORSIZE</i></dt>
+			<dd>The disk sector size check failed.</dd><br />
+			<dt id="VIX_E_HOST_FILE_ERROR_EOF">14005 &ndash; <i>VIX_E_HOST_FILE_ERROR_EOF</i></dt>
+			<dd>Read beyond the end of file.</dd><br />
+			<dt id="VIX_E_HOST_NETBLKDEV_HANDSHAKE">14006 &ndash; <i>VIX_E_HOST_NETBLKDEV_HANDSHAKE</i></dt>
+			<dd>Error in protocol.</dd><br />
+			<dt id="VIX_E_HOST_SOCKET_CREATION_ERROR">14007 &ndash; <i>VIX_E_HOST_SOCKET_CREATION_ERROR</i></dt>
+			<dd>Unable to create a socket.</dd><br />
+			<dt id="VIX_E_HOST_SERVER_NOT_FOUND">14008 &ndash; <i>VIX_E_HOST_SERVER_NOT_FOUND</i></dt>
+			<dd>The specified server could not be contacted.</dd><br />
+			<dt id="VIX_E_HOST_NETWORK_CONN_REFUSED">14009 &ndash; <i>VIX_E_HOST_NETWORK_CONN_REFUSED</i></dt>
+			<dd>The server refused connection.</dd><br />
+			<dt id="VIX_E_HOST_TCP_SOCKET_ERROR">14010 &ndash; <i>VIX_E_HOST_TCP_SOCKET_ERROR</i></dt>
+			<dd>There was an error in communication.</dd><br />
+			<dt id="VIX_E_HOST_TCP_CONN_LOST">14011 &ndash; <i>VIX_E_HOST_TCP_CONN_LOST</i></dt>
+			<dd>The connection was lost.</dd><br />
+			<dt id="VIX_E_HOST_NBD_HASHFILE_VOLUME">14012 &ndash; <i>VIX_E_HOST_NBD_HASHFILE_VOLUME</i></dt>
+			<dd>NBD_ERR_HASHFILE_VOLUME.</dd><br />
+			<dt id="VIX_E_HOST_NBD_HASHFILE_INIT">14013 &ndash; <i>VIX_E_HOST_NBD_HASHFILE_INIT</i></dt>
+			<dd>NBD_ERR_HASHFILE_INIT.</dd><br />
+			<dt id="VIX_E_DISK_INVAL">16000 &ndash; <i>VIX_E_DISK_INVAL</i></dt>
+			<dd>One of the parameters supplied is invalid.</dd><br />
+			<dt id="VIX_E_DISK_NOINIT">16001 &ndash; <i>VIX_E_DISK_NOINIT</i></dt>
+			<dd>The disk library has not been initialized.</dd><br />
+			<dt id="VIX_E_DISK_NOIO">16002 &ndash; <i>VIX_E_DISK_NOIO</i></dt>
+			<dd>The called function requires the virtual disk to be opened for I/O.</dd><br />
+			<dt id="VIX_E_DISK_PARTIALCHAIN">16003 &ndash; <i>VIX_E_DISK_PARTIALCHAIN</i></dt>
+			<dd>The called function cannot be performed on partial chains. Open the parent virtual disk.</dd><br />
+			<dt id="VIX_E_DISK_NEEDSREPAIR">16006 &ndash; <i>VIX_E_DISK_NEEDSREPAIR</i></dt>
+			<dd>The specified virtual disk needs repair.</dd><br />
+			<dt id="VIX_E_DISK_OUTOFRANGE">16007 &ndash; <i>VIX_E_DISK_OUTOFRANGE</i></dt>
+			<dd>You have requested access to an area of the virtual disk that is out of bounds.</dd><br />
+			<dt id="VIX_E_DISK_CID_MISMATCH">16008 &ndash; <i>VIX_E_DISK_CID_MISMATCH</i></dt>
+			<dd>The parent virtual disk has been modified since the child was created. Parent virutal disk's content ID does not match with the parent content ID in the child.</dd><br />
+			<dt id="VIX_E_DISK_CANTSHRINK">16009 &ndash; <i>VIX_E_DISK_CANTSHRINK</i></dt>
+			<dd>The specified virtual disk cannot be shrunk because it is not the parent disk.</dd><br />
+			<dt id="VIX_E_DISK_PARTMISMATCH">16010 &ndash; <i>VIX_E_DISK_PARTMISMATCH</i></dt>
+			<dd>The partition table on the physical disk has changed since the disk was created. Remove the physical disk from the virtual machine, then add it again.</dd><br />
+			<dt id="VIX_E_DISK_UNSUPPORTEDDISKVERSION">16011 &ndash; <i>VIX_E_DISK_UNSUPPORTEDDISKVERSION</i></dt>
+			<dd>The version of the virtual disk is newer than the version supported by this program.</dd><br />
+			<dt id="VIX_E_DISK_OPENPARENT">16012 &ndash; <i>VIX_E_DISK_OPENPARENT</i></dt>
+			<dd>The parent of this virtual disk could not be opened.</dd><br />
+			<dt id="VIX_E_DISK_NOTSUPPORTED">16013 &ndash; <i>VIX_E_DISK_NOTSUPPORTED</i></dt>
+			<dd>The specified feature is not supported by this version.</dd><br />
+			<dt id="VIX_E_DISK_NEEDKEY">16014 &ndash; <i>VIX_E_DISK_NEEDKEY</i></dt>
+			<dd>One or more required keys were not provided.</dd><br />
+			<dt id="VIX_E_DISK_NOKEYOVERRIDE">16015 &ndash; <i>VIX_E_DISK_NOKEYOVERRIDE</i></dt>
+			<dd>Will not create an unencrypted child of an encrypted disk without explicit request.</dd><br />
+			<dt id="VIX_E_DISK_NOTENCRYPTED">16016 &ndash; <i>VIX_E_DISK_NOTENCRYPTED</i></dt>
+			<dd>Not an encrypted disk.</dd><br />
+			<dt id="VIX_E_DISK_NOKEY">16017 &ndash; <i>VIX_E_DISK_NOKEY</i></dt>
+			<dd>No keys were supplied for encrypting the disk.</dd><br />
+			<dt id="VIX_E_DISK_INVALIDPARTITIONTABLE">16018 &ndash; <i>VIX_E_DISK_INVALIDPARTITIONTABLE</i></dt>
+			<dd>The partition table is invalid.</dd><br />
+			<dt id="VIX_E_DISK_NOTNORMAL">16019 &ndash; <i>VIX_E_DISK_NOTNORMAL</i></dt>
+			<dd>Only sparse extents with embedded descriptors can be encrypted.</dd><br />
+			<dt id="VIX_E_DISK_NOTENCDESC">16020 &ndash; <i>VIX_E_DISK_NOTENCDESC</i></dt>
+			<dd>Not an encrypted descriptor file.</dd><br />
+			<dt id="VIX_E_DISK_NEEDVMFS">16022 &ndash; <i>VIX_E_DISK_NEEDVMFS</i></dt>
+			<dd>The file system is not VMFS.</dd><br />
+			<dt id="VIX_E_DISK_RAWTOOBIG">16024 &ndash; <i>VIX_E_DISK_RAWTOOBIG</i></dt>
+			<dd>The physical disk is too big.</dd><br />
+			<dt id="VIX_E_DISK_TOOMANYOPENFILES">16027 &ndash; <i>VIX_E_DISK_TOOMANYOPENFILES</i></dt>
+			<dd>The host's limit for open files has been exceeded.</dd><br />
+			<dt id="VIX_E_DISK_TOOMANYREDO">16028 &ndash; <i>VIX_E_DISK_TOOMANYREDO</i></dt>
+			<dd>Too many levels of redo logs.</dd><br />
+			<dt id="VIX_E_DISK_RAWTOOSMALL">16029 &ndash; <i>VIX_E_DISK_RAWTOOSMALL</i></dt>
+			<dd>The physical disk is too small.</dd><br />
+			<dt id="VIX_E_DISK_INVALIDCHAIN">16030 &ndash; <i>VIX_E_DISK_INVALIDCHAIN</i></dt>
+			<dd>Invalid disk chain: cannot mix hosted and managed style disks in the same chain.</dd><br />
+			<dt id="VIX_E_DISK_KEY_NOTFOUND">16052 &ndash; <i>VIX_E_DISK_KEY_NOTFOUND</i></dt>
+			<dd>The specified key is not found in the disk database.</dd><br />
+			<dt id="VIX_E_DISK_SUBSYSTEM_INIT_FAIL">16053 &ndash; <i>VIX_E_DISK_SUBSYSTEM_INIT_FAIL</i></dt>
+			<dd>One or more required subsystems failed to initialize.</dd><br />
+			<dt id="VIX_E_DISK_INVALID_CONNECTION">16054 &ndash; <i>VIX_E_DISK_INVALID_CONNECTION</i></dt>
+			<dd>Invalid connection handle.</dd><br />
+			<dt id="VIX_E_DISK_ENCODING">16061 &ndash; <i>VIX_E_DISK_ENCODING</i></dt>
+			<dd>Disk encoding error.</dd><br />
+			<dt id="VIX_E_DISK_CANTREPAIR">16062 &ndash; <i>VIX_E_DISK_CANTREPAIR</i></dt>
+			<dd>The disk is corrupted and unrepairable.</dd><br />
+			<dt id="VIX_E_DISK_INVALIDDISK">16063 &ndash; <i>VIX_E_DISK_INVALIDDISK</i></dt>
+			<dd>The specified file is not a virtual disk.</dd><br />
+			<dt id="VIX_E_DISK_NOLICENSE">16064 &ndash; <i>VIX_E_DISK_NOLICENSE</i></dt>
+			<dd>The host is not licensed for this feature.</dd><br />
+			<dt id="VIX_E_DISK_NODEVICE">16065 &ndash; <i>VIX_E_DISK_NODEVICE</i></dt>
+			<dd>The device does not exist.</dd><br />
+			<dt id="VIX_E_DISK_UNSUPPORTEDDEVICE">16066 &ndash; <i>VIX_E_DISK_UNSUPPORTEDDEVICE</i></dt>
+			<dd>The operation is not supported on this type of device.</dd><br />
+			<dt id="VIX_E_DISK_CAPACITY_MISMATCH">16067 &ndash; <i>VIX_E_DISK_CAPACITY_MISMATCH</i></dt>
+			<dd>The parent virtual disk's capacity is not the same as child's capacity.</dd><br />
+			<dt id="VIX_E_DISK_PARENT_NOTALLOWED">16068 &ndash; <i>VIX_E_DISK_PARENT_NOTALLOWED</i></dt>
+			<dd>Disk type cannot be allowed as parent.</dd><br />
+			<dt id="VIX_E_DISK_ATTACH_ROOTLINK">16069 &ndash; <i>VIX_E_DISK_ATTACH_ROOTLINK</i></dt>
+			<dd>Both parent and child virtual disks are root links.</dd><br />
+			<dt id="VIX_E_CRYPTO_UNKNOWN_ALGORITHM">17000 &ndash; <i>VIX_E_CRYPTO_UNKNOWN_ALGORITHM</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_BAD_BUFFER_SIZE">17001 &ndash; <i>VIX_E_CRYPTO_BAD_BUFFER_SIZE</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_INVALID_OPERATION">17002 &ndash; <i>VIX_E_CRYPTO_INVALID_OPERATION</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_RANDOM_DEVICE">17003 &ndash; <i>VIX_E_CRYPTO_RANDOM_DEVICE</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_NEED_PASSWORD">17004 &ndash; <i>VIX_E_CRYPTO_NEED_PASSWORD</i></dt>
+			<dd>A password is required for this operation.</dd><br />
+			<dt id="VIX_E_CRYPTO_BAD_PASSWORD">17005 &ndash; <i>VIX_E_CRYPTO_BAD_PASSWORD</i></dt>
+			<dd>Incorrect password.</dd><br />
+			<dt id="VIX_E_CRYPTO_NOT_IN_DICTIONARY">17006 &ndash; <i>VIX_E_CRYPTO_NOT_IN_DICTIONARY</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_NO_CRYPTO">17007 &ndash; <i>VIX_E_CRYPTO_NO_CRYPTO</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_ERROR">17008 &ndash; <i>VIX_E_CRYPTO_ERROR</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_BAD_FORMAT">17009 &ndash; <i>VIX_E_CRYPTO_BAD_FORMAT</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_LOCKED">17010 &ndash; <i>VIX_E_CRYPTO_LOCKED</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_EMPTY">17011 &ndash; <i>VIX_E_CRYPTO_EMPTY</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CRYPTO_KEYSAFE_LOCATOR">17012 &ndash; <i>VIX_E_CRYPTO_KEYSAFE_LOCATOR</i></dt>
+			<dd>Security library error.</dd><br />
+			<dt id="VIX_E_CANNOT_CONNECT_TO_HOST">18000 &ndash; <i>VIX_E_CANNOT_CONNECT_TO_HOST</i></dt>
+			<dd>Cannot connect to the host.</dd><br />
+			<dt id="VIX_E_NOT_FOR_REMOTE_HOST">18001 &ndash; <i>VIX_E_NOT_FOR_REMOTE_HOST</i></dt>
+			<dd>Only a local host can support this feature.</dd><br />
+			<dt id="VIX_E_INVALID_HOSTNAME_SPECIFICATION">18002 &ndash; <i>VIX_E_INVALID_HOSTNAME_SPECIFICATION</i></dt>
+			<dd>Malformed hostname parameter. For the given service provider, the hostname must be a URL in the form https://<hostname>:<port>/sdk.</dd><br />
+			<dt id="VIX_E_SCREEN_CAPTURE_ERROR">19000 &ndash; <i>VIX_E_SCREEN_CAPTURE_ERROR</i></dt>
+			<dd>Could not capture screen.</dd><br />
+			<dt id="VIX_E_SCREEN_CAPTURE_BAD_FORMAT">19001 &ndash; <i>VIX_E_SCREEN_CAPTURE_BAD_FORMAT</i></dt>
+			<dd>Requested unsupported format.</dd><br />
+			<dt id="VIX_E_SCREEN_CAPTURE_COMPRESSION_FAIL">19002 &ndash; <i>VIX_E_SCREEN_CAPTURE_COMPRESSION_FAIL</i></dt>
+			<dd>Could not compress the screen capture.</dd><br />
+			<dt id="VIX_E_SCREEN_CAPTURE_LARGE_DATA">19003 &ndash; <i>VIX_E_SCREEN_CAPTURE_LARGE_DATA</i></dt>
+			<dd>The screen capture data is larger than the maximum size.</dd><br />
+			<dt id="VIX_E_GUEST_VOLUMES_NOT_FROZEN">20000 &ndash; <i>VIX_E_GUEST_VOLUMES_NOT_FROZEN</i></dt>
+			<dd>The drives are not frozen.</dd><br />
+			<dt id="VIX_E_NOT_A_FILE">20001 &ndash; <i>VIX_E_NOT_A_FILE</i></dt>
+			<dd>The object is not a file.</dd><br />
+			<dt id="VIX_E_NOT_A_DIRECTORY">20002 &ndash; <i>VIX_E_NOT_A_DIRECTORY</i></dt>
+			<dd>The object is not a directory.</dd><br />
+			<dt id="VIX_E_NO_SUCH_PROCESS">20003 &ndash; <i>VIX_E_NO_SUCH_PROCESS</i></dt>
+			<dd>No such process.</dd><br />
+			<dt id="VIX_E_FILE_NAME_TOO_LONG">20004 &ndash; <i>VIX_E_FILE_NAME_TOO_LONG</i></dt>
+			<dd>File name too long.</dd><br />
+			<dt id="VIX_E_OPERATION_DISABLED">20005 &ndash; <i>VIX_E_OPERATION_DISABLED</i></dt>
+			<dd>The operation has been disabled by the guest operating system.</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_NO_IMAGE">21000 &ndash; <i>VIX_E_TOOLS_INSTALL_NO_IMAGE</i></dt>
+			<dd>No .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_IMAGE_INACCESIBLE">21001 &ndash; <i>VIX_E_TOOLS_INSTALL_IMAGE_INACCESIBLE</i></dt>
+			<dd>The .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_NO_DEVICE">21002 &ndash; <i>VIX_E_TOOLS_INSTALL_NO_DEVICE</i></dt>
+			<dd>The guest operating system does not have a device configured for the .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_DEVICE_NOT_CONNECTED">21003 &ndash; <i>VIX_E_TOOLS_INSTALL_DEVICE_NOT_CONNECTED</i></dt>
+			<dd>The guest operating system device used for installation of .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_CANCELLED">21004 &ndash; <i>VIX_E_TOOLS_INSTALL_CANCELLED</i></dt>
+			<dd>The .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_INIT_FAILED">21005 &ndash; <i>VIX_E_TOOLS_INSTALL_INIT_FAILED</i></dt>
+			<dd>The .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_AUTO_NOT_SUPPORTED">21006 &ndash; <i>VIX_E_TOOLS_INSTALL_AUTO_NOT_SUPPORTED</i></dt>
+			<dd>The .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_GUEST_NOT_READY">21007 &ndash; <i>VIX_E_TOOLS_INSTALL_GUEST_NOT_READY</i></dt>
+			<dd> are not running in the guest OS. Automatic upgrade is not possible.</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_SIG_CHECK_FAILED">21008 &ndash; <i>VIX_E_TOOLS_INSTALL_SIG_CHECK_FAILED</i></dt>
+			<dd>The .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_ERROR">21009 &ndash; <i>VIX_E_TOOLS_INSTALL_ERROR</i></dt>
+			<dd>The .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_ALREADY_UP_TO_DATE">21010 &ndash; <i>VIX_E_TOOLS_INSTALL_ALREADY_UP_TO_DATE</i></dt>
+			<dd> are already up to date.</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_IN_PROGRESS">21011 &ndash; <i>VIX_E_TOOLS_INSTALL_IN_PROGRESS</i></dt>
+			<dd>A .</dd><br />
+			<dt id="VIX_E_TOOLS_INSTALL_IMAGE_COPY_FAILED">21012 &ndash; <i>VIX_E_TOOLS_INSTALL_IMAGE_COPY_FAILED</i></dt>
+			<dd>Could not copy .</dd><br />
+			<dt id="VIX_E_WRAPPER_WORKSTATION_NOT_INSTALLED">22001 &ndash; <i>VIX_E_WRAPPER_WORKSTATION_NOT_INSTALLED</i></dt>
+			<dd>Service type VIX_SERVICEPROVIDER_VMWARE_WORKSTATION was specified but not installed.</dd><br />
+			<dt id="VIX_E_WRAPPER_VERSION_NOT_FOUND">22002 &ndash; <i>VIX_E_WRAPPER_VERSION_NOT_FOUND</i></dt>
+			<dd>The specified version was not found.</dd><br />
+			<dt id="VIX_E_WRAPPER_SERVICEPROVIDER_NOT_FOUND">22003 &ndash; <i>VIX_E_WRAPPER_SERVICEPROVIDER_NOT_FOUND</i></dt>
+			<dd>The specified service provider was not found.</dd><br />
+			<dt id="VIX_E_WRAPPER_PLAYER_NOT_INSTALLED">22004 &ndash; <i>VIX_E_WRAPPER_PLAYER_NOT_INSTALLED</i></dt>
+			<dd>Service type VIX_SERVICEPROVIDER_VMWARE_PLAYER was specified but not installed.</dd><br />
+			<dt id="VIX_E_WRAPPER_RUNTIME_NOT_INSTALLED">22005 &ndash; <i>VIX_E_WRAPPER_RUNTIME_NOT_INSTALLED</i></dt>
+			<dd>Cannot find support libraries; VIX appears to have not been installed.</dd><br />
+			<dt id="VIX_E_WRAPPER_MULTIPLE_SERVICEPROVIDERS">22006 &ndash; <i>VIX_E_WRAPPER_MULTIPLE_SERVICEPROVIDERS</i></dt>
+			<dd>Cannot connect with multiple service providers.</dd><br />
+			<dt id="VIX_E_MNTAPI_MOUNTPT_NOT_FOUND">24000 &ndash; <i>VIX_E_MNTAPI_MOUNTPT_NOT_FOUND</i></dt>
+			<dd>Could not find the specified mountpoint.</dd><br />
+			<dt id="VIX_E_MNTAPI_MOUNTPT_IN_USE">24001 &ndash; <i>VIX_E_MNTAPI_MOUNTPT_IN_USE</i></dt>
+			<dd>The mountpoint is already in use.</dd><br />
+			<dt id="VIX_E_MNTAPI_DISK_NOT_FOUND">24002 &ndash; <i>VIX_E_MNTAPI_DISK_NOT_FOUND</i></dt>
+			<dd>Could not find the specified virtual disk.</dd><br />
+			<dt id="VIX_E_MNTAPI_DISK_NOT_MOUNTED">24003 &ndash; <i>VIX_E_MNTAPI_DISK_NOT_MOUNTED</i></dt>
+			<dd>The specified disk is not mounted.</dd><br />
+			<dt id="VIX_E_MNTAPI_DISK_IS_MOUNTED">24004 &ndash; <i>VIX_E_MNTAPI_DISK_IS_MOUNTED</i></dt>
+			<dd>The specified disk is already mounted.</dd><br />
+			<dt id="VIX_E_MNTAPI_DISK_NOT_SAFE">24005 &ndash; <i>VIX_E_MNTAPI_DISK_NOT_SAFE</i></dt>
+			<dd>It is not safe to mount the virtual disk. It might be attached to a suspended or powered-on virtual machine, or it may be inside a snapshot chain.</dd><br />
+			<dt id="VIX_E_MNTAPI_DISK_CANT_OPEN">24006 &ndash; <i>VIX_E_MNTAPI_DISK_CANT_OPEN</i></dt>
+			<dd>Cannot open the virtual disk.</dd><br />
+			<dt id="VIX_E_MNTAPI_CANT_READ_PARTS">24007 &ndash; <i>VIX_E_MNTAPI_CANT_READ_PARTS</i></dt>
+			<dd>Cannot read or parse the partition table on the virtual disk.</dd><br />
+			<dt id="VIX_E_MNTAPI_UMOUNT_APP_NOT_FOUND">24008 &ndash; <i>VIX_E_MNTAPI_UMOUNT_APP_NOT_FOUND</i></dt>
+			<dd>Could not find the umount application in a standard system directory such as /bin, /usr/bin, or /sbin.</dd><br />
+			<dt id="VIX_E_MNTAPI_UMOUNT">24009 &ndash; <i>VIX_E_MNTAPI_UMOUNT</i></dt>
+			<dd>The umount command failed.</dd><br />
+			<dt id="VIX_E_MNTAPI_NO_MOUNTABLE_PARTITONS">24010 &ndash; <i>VIX_E_MNTAPI_NO_MOUNTABLE_PARTITONS</i></dt>
+			<dd>The virtual disk does not have any partitions that the host system knows how to mount.</dd><br />
+			<dt id="VIX_E_MNTAPI_PARTITION_RANGE">24011 &ndash; <i>VIX_E_MNTAPI_PARTITION_RANGE</i></dt>
+			<dd>An invalid partition number was specified.</dd><br />
+			<dt id="VIX_E_MNTAPI_PERM">24012 &ndash; <i>VIX_E_MNTAPI_PERM</i></dt>
+			<dd>Insufficient permissions to perform this operation.</dd><br />
+			<dt id="VIX_E_MNTAPI_DICT">24013 &ndash; <i>VIX_E_MNTAPI_DICT</i></dt>
+			<dd>Error accessing metadata. You might not have sufficient permission to access this disk or the metadata may be corrupted.</dd><br />
+			<dt id="VIX_E_MNTAPI_DICT_LOCKED">24014 &ndash; <i>VIX_E_MNTAPI_DICT_LOCKED</i></dt>
+			<dd>The metadata for this disk is locked. Check for other running virtual disk mounter applications.</dd><br />
+			<dt id="VIX_E_MNTAPI_OPEN_HANDLES">24015 &ndash; <i>VIX_E_MNTAPI_OPEN_HANDLES</i></dt>
+			<dd>Another process is performing an operation on this mounted virtual disk.</dd><br />
+			<dt id="VIX_E_MNTAPI_CANT_MAKE_VAR_DIR">24016 &ndash; <i>VIX_E_MNTAPI_CANT_MAKE_VAR_DIR</i></dt>
+			<dd>Cannot create directory '/var/run/vmware/fuse'.</dd><br />
+			<dt id="VIX_E_MNTAPI_NO_ROOT">24017 &ndash; <i>VIX_E_MNTAPI_NO_ROOT</i></dt>
+			<dd>This application must be run setuid root.</dd><br />
+			<dt id="VIX_E_MNTAPI_LOOP_FAILED">24018 &ndash; <i>VIX_E_MNTAPI_LOOP_FAILED</i></dt>
+			<dd>A loop device operation failed.</dd><br />
+			<dt id="VIX_E_MNTAPI_DAEMON">24019 &ndash; <i>VIX_E_MNTAPI_DAEMON</i></dt>
+			<dd>The VMware fuse daemon failed to start.</dd><br />
+			<dt id="VIX_E_MNTAPI_INTERNAL">24020 &ndash; <i>VIX_E_MNTAPI_INTERNAL</i></dt>
+			<dd>An internal error has occurred. Contact VMware support.</dd><br />
+			<dt id="VIX_E_MNTAPI_SYSTEM">24021 &ndash; <i>VIX_E_MNTAPI_SYSTEM</i></dt>
+			<dd>A system call has failed.</dd><br />
+			<dt id="VIX_E_MNTAPI_NO_CONNECTION_DETAILS">24022 &ndash; <i>VIX_E_MNTAPI_NO_CONNECTION_DETAILS</i></dt>
+			<dd>Unable to get vixDiskLib connection details.</dd><br />
+			<dt id="VIX_E_MNTAPI_INCOMPATIBLE_VERSION">24300 &ndash; <i>VIX_E_MNTAPI_INCOMPATIBLE_VERSION</i></dt>
+			<dd>The product version number is lower than the expected version number.</dd><br />
+			<dt id="VIX_E_MNTAPI_OS_ERROR">24301 &ndash; <i>VIX_E_MNTAPI_OS_ERROR</i></dt>
+			<dd>There was an operating system error.</dd><br />
+			<dt id="VIX_E_MNTAPI_DRIVE_LETTER_IN_USE">24302 &ndash; <i>VIX_E_MNTAPI_DRIVE_LETTER_IN_USE</i></dt>
+			<dd>The specified drive letter is already in use.</dd><br />
+			<dt id="VIX_E_MNTAPI_DRIVE_LETTER_ALREADY_ASSIGNED">24303 &ndash; <i>VIX_E_MNTAPI_DRIVE_LETTER_ALREADY_ASSIGNED</i></dt>
+			<dd>The specified drive letter is already assigned.</dd><br />
+			<dt id="VIX_E_MNTAPI_VOLUME_NOT_MOUNTED">24304 &ndash; <i>VIX_E_MNTAPI_VOLUME_NOT_MOUNTED</i></dt>
+			<dd>The specified volume is not mounted.</dd><br />
+			<dt id="VIX_E_MNTAPI_VOLUME_ALREADY_MOUNTED">24305 &ndash; <i>VIX_E_MNTAPI_VOLUME_ALREADY_MOUNTED</i></dt>
+			<dd>The specified volume is already mounted.</dd><br />
+			<dt id="VIX_E_MNTAPI_FORMAT_FAILURE">24306 &ndash; <i>VIX_E_MNTAPI_FORMAT_FAILURE</i></dt>
+			<dd>Unable to format volume.</dd><br />
+			<dt id="VIX_E_MNTAPI_NO_DRIVER">24307 &ndash; <i>VIX_E_MNTAPI_NO_DRIVER</i></dt>
+			<dd>Driver not found.</dd><br />
+			<dt id="VIX_E_MNTAPI_ALREADY_OPENED">24308 &ndash; <i>VIX_E_MNTAPI_ALREADY_OPENED</i></dt>
+			<dd>A handle to the Volume or DiskSet is already open.</dd><br />
+			<dt id="VIX_E_MNTAPI_ITEM_NOT_FOUND">24309 &ndash; <i>VIX_E_MNTAPI_ITEM_NOT_FOUND</i></dt>
+			<dd>Invalid file. A required section of the file is missing.</dd><br />
+			<dt id="VIX_E_MNTAPI_UNSUPPROTED_BOOT_LOADER">24310 &ndash; <i>VIX_E_MNTAPI_UNSUPPROTED_BOOT_LOADER</i></dt>
+			<dd>Boot loader not supported.</dd><br />
+			<dt id="VIX_E_MNTAPI_UNSUPPROTED_OS">24311 &ndash; <i>VIX_E_MNTAPI_UNSUPPROTED_OS</i></dt>
+			<dd>The current operating system is not supported.</dd><br />
+			<dt id="VIX_E_MNTAPI_CODECONVERSION">24312 &ndash; <i>VIX_E_MNTAPI_CODECONVERSION</i></dt>
+			<dd>An error occurred while converting the string.</dd><br />
+			<dt id="VIX_E_MNTAPI_REGWRITE_ERROR">24313 &ndash; <i>VIX_E_MNTAPI_REGWRITE_ERROR</i></dt>
+			<dd>There was an error writing to the registry.</dd><br />
+			<dt id="VIX_E_MNTAPI_UNSUPPORTED_FT_VOLUME">24314 &ndash; <i>VIX_E_MNTAPI_UNSUPPORTED_FT_VOLUME</i></dt>
+			<dd>Windows NT4 Fault Tolerant volume type is not supported.</dd><br />
+			<dt id="VIX_E_MNTAPI_PARTITION_NOT_FOUND">24315 &ndash; <i>VIX_E_MNTAPI_PARTITION_NOT_FOUND</i></dt>
+			<dd>The specified partition was not found.</dd><br />
+			<dt id="VIX_E_MNTAPI_PUTFILE_ERROR">24316 &ndash; <i>VIX_E_MNTAPI_PUTFILE_ERROR</i></dt>
+			<dd>Putfile error.</dd><br />
+			<dt id="VIX_E_MNTAPI_GETFILE_ERROR">24317 &ndash; <i>VIX_E_MNTAPI_GETFILE_ERROR</i></dt>
+			<dd>Getfile error.</dd><br />
+			<dt id="VIX_E_MNTAPI_REG_NOT_OPENED">24318 &ndash; <i>VIX_E_MNTAPI_REG_NOT_OPENED</i></dt>
+			<dd>Unable to open registry key.</dd><br />
+			<dt id="VIX_E_MNTAPI_REGDELKEY_ERROR">24319 &ndash; <i>VIX_E_MNTAPI_REGDELKEY_ERROR</i></dt>
+			<dd>There was an error deleting the registry key.</dd><br />
+			<dt id="VIX_E_MNTAPI_CREATE_PARTITIONTABLE_ERROR">24320 &ndash; <i>VIX_E_MNTAPI_CREATE_PARTITIONTABLE_ERROR</i></dt>
+			<dd>An error occurred while creating the partition table.</dd><br />
+			<dt id="VIX_E_MNTAPI_OPEN_FAILURE">24321 &ndash; <i>VIX_E_MNTAPI_OPEN_FAILURE</i></dt>
+			<dd>Failed to open DiskSet.</dd><br />
+			<dt id="VIX_E_MNTAPI_VOLUME_NOT_WRITABLE">24322 &ndash; <i>VIX_E_MNTAPI_VOLUME_NOT_WRITABLE</i></dt>
+			<dd>The volume is write-protected.</dd><br />
+			<dt id="VIX_E_ASYNC_MIXEDMODE_UNSUPPORTED">26000 &ndash; <i>VIX_E_ASYNC_MIXEDMODE_UNSUPPORTED</i></dt>
+			<dd>Synchronous and asynchronous I/O on the same disk handle is not allowed.</dd><br />
+			<dt id="VIX_E_NET_HTTP_UNSUPPORTED_PROTOCOL">30001 &ndash; <i>VIX_E_NET_HTTP_UNSUPPORTED_PROTOCOL</i></dt>
+			<dd>The URL provided uses an unsupported protocol.</dd><br />
+			<dt id="VIX_E_NET_HTTP_URL_MALFORMAT">30003 &ndash; <i>VIX_E_NET_HTTP_URL_MALFORMAT</i></dt>
+			<dd>The URL was not properly formatted.</dd><br />
+			<dt id="VIX_E_NET_HTTP_COULDNT_RESOLVE_PROXY">30005 &ndash; <i>VIX_E_NET_HTTP_COULDNT_RESOLVE_PROXY</i></dt>
+			<dd>Failed to resolve proxy.</dd><br />
+			<dt id="VIX_E_NET_HTTP_COULDNT_RESOLVE_HOST">30006 &ndash; <i>VIX_E_NET_HTTP_COULDNT_RESOLVE_HOST</i></dt>
+			<dd>Failed to resolve host.</dd><br />
+			<dt id="VIX_E_NET_HTTP_COULDNT_CONNECT">30007 &ndash; <i>VIX_E_NET_HTTP_COULDNT_CONNECT</i></dt>
+			<dd>Failed to connect to host or proxy.</dd><br />
+			<dt id="VIX_E_NET_HTTP_HTTP_RETURNED_ERROR">30022 &ndash; <i>VIX_E_NET_HTTP_HTTP_RETURNED_ERROR</i></dt>
+			<dd>Server returned HTTP error code >= 400.</dd><br />
+			<dt id="VIX_E_NET_HTTP_OPERATION_TIMEDOUT">30028 &ndash; <i>VIX_E_NET_HTTP_OPERATION_TIMEDOUT</i></dt>
+			<dd>Network operation timed out.</dd><br />
+			<dt id="VIX_E_NET_HTTP_SSL_CONNECT_ERROR">30035 &ndash; <i>VIX_E_NET_HTTP_SSL_CONNECT_ERROR</i></dt>
+			<dd>A problem occurred during the SSL/TLS handshake.</dd><br />
+			<dt id="VIX_E_NET_HTTP_TOO_MANY_REDIRECTS">30047 &ndash; <i>VIX_E_NET_HTTP_TOO_MANY_REDIRECTS</i></dt>
+			<dd>Reached the maximum number of redirects.</dd><br />
+			<dt id="VIX_E_NET_HTTP_TRANSFER">30200 &ndash; <i>VIX_E_NET_HTTP_TRANSFER</i></dt>
+			<dd>Failure sending/receiving network data.</dd><br />
+			<dt id="VIX_E_NET_HTTP_SSL_SECURITY">30201 &ndash; <i>VIX_E_NET_HTTP_SSL_SECURITY</i></dt>
+			<dd>An SSL error occurred.</dd><br />
+			<dt id="VIX_E_NET_HTTP_GENERIC">30202 &ndash; <i>VIX_E_NET_HTTP_GENERIC</i></dt>
+			<dd>A generic HTTP error occurred.</dd><br />
+		</dl></body>
+</html>

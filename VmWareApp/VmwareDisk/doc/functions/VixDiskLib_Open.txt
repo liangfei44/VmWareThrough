@@ -1,0 +1,49 @@
+[name]
+VixDiskLib_Open
+
+[description]
+[code]
+VixError
+VixDiskLib_Open(const VixDiskLibConnection connection,
+                const char *path,
+                uint32 flags,
+                VixDiskLibHandle *diskHandle);
+[endcode]
+
+This function opens a virtual disk.
+
+[parameters]
+   connection - A valid VixDiskLib connection.
+   path - Path to the virtual disk file. If you want to open a disk that
+          is part of a snapshot, specify the name of the disk as referenced
+          by the snapshot.
+   flags - Bitwise or'ed  combination of VIXDISKLIB_FLAG_OPEN_UNBUFFERED,
+           VIXDISKLIB_FLAG_OPEN_SINGLE_LINK and VIXDISKLIB_FLAG_OPEN_READ_ONLY.
+	   If VixDiskLib_ConnectEx() was called with the readOnly parameter
+	   true, the virtual disk is opened read-only even without the
+	   VIXDISKLIB_FLAG_OPEN_READ_ONLY flag.
+   diskHandle - Pointer to the opened diskHandle. This is an output parameter.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* You can use VIXDISKLIB_FLAG_OPEN_SINGLE_LINK to open a child disk without
+  opening the parent file.
+* Trying to open a hosted virtual disk with a VixDiskLib connection opened
+  for managed disk access will result in failure.
+* Trying to open a managed virtual disk with a VixDiskLib connection opened
+  for hosted disk access will result in failure.
+* When opening a managed disk, provide the canonical path name for the
+  virtual disk file.
+* Trying to open a local child disk created for a managed disk will fail.
+  Use VixDiskLib_Attach() instead.
+
+[example]
+[code]
+   vixError = VixDiskLib_Open(appGlobals.connection,
+                              appGlobals.diskPath,
+                              appGlobals.openFlags,
+                              &srcHandle);
+[endcode]
+

@@ -1,0 +1,46 @@
+[name]
+VixDiskLib_Init
+
+[description]
+[code]
+VixError
+VixDiskLib_Init(uint32 majorVersion,
+                uint32 minorVersion,
+                VixDiskLibGenericLogFunc *log,
+                VixDiskLibGenericLogFunc *warn,
+                VixDiskLibGenericLogFunc *panic,
+                const char *libDir);
+[endcode]
+
+This function initializes VixDiskLib.
+
+[parameters]
+   majorVersion - Major version number of VixDiskLib (VDDK release number).
+   minorVersion - Minor version number of VixDiskLib (VDDK dot release number).
+   log - User defined function to write log messages.
+   warn - User defined function to write warning messages. In addition, VixDiskLib also writes this message to stderr.
+   panic - User defined function to write panic message.
+   libDir - A directory path to locate dependent DLL / shared objects (e.g vixDiskLibVim.dll, libeay32.dll). Can be NULL.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+ 
+[remarks]
+* This function is deprecated: use VixDiskLib_InitEx() instead.
+* VixDiskLib_Init() must be the first VixDiskLib function to be called.
+* Due to internationalization, you may not call VixDiskLib_Init() more than once per process.
+* In a multi-threaded program, it is the application programmer's responsibility
+  to serialize writing to a log file.
+* VixDiskLib_Init() must be matched with VixDiskLib_Exit().
+* Calling VixDiskLib_Init() with NULL parameters for log, warn, and panic results in
+  VixDiskLib creating and writing to a default log file.
+* Passing NULL as libDir causes VixDiskLib to choose a default library location.
+
+[example]
+[code]
+   vixError = VixDiskLib_Init(VIXDISKLIB_VERSION_MAJOR,
+                              VIXDISKLIB_VERSION_MINOR,
+                              NULL, NULL, NULL,  // log, warn, panic
+                              NULL);             // libDir
+[endcode]
+

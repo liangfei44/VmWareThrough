@@ -1,0 +1,27 @@
+[name]
+VixDiskLib_ListTransportModes
+
+[description]
+[code]
+const char *
+VixDiskLib_ListTransportModes(void);
+[endcode]
+
+Get a list of transport modes known to VixDiskLib. This list is used as the
+default if you call VixDiskLib_ConnectEx() with transportModes set to NULL.
+
+The list of transport modes is a colon-separated string, "file:san:hotadd:nbd"
+for example. See VixDiskLib_ConnectEx() for more details.
+
+[parameters]
+none
+
+[return]
+Returns a string that is a list of plugins. The caller must not
+free the string.
+
+[example]
+[code]
+   printf("Choice of transport modes: %s\n", VixDiskLib_ListTransportModes());
+[endcode]
+

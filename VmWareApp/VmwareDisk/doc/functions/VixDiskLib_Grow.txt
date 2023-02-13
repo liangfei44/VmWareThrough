@@ -1,0 +1,43 @@
+[name]
+VixDiskLib_Grow
+
+[description]
+[code]
+VixError
+VixDiskLib_Grow(VixDiskLibConnection connection,
+                const char *path,
+                VixDiskLibSectorType capacity,
+                Bool updateGeometry,
+                VixDiskLibProgressFunc progressFunc,
+                void *progressCallbackData);
+[endcode]
+
+This function grows an existing virtual disk.
+
+[parameters]
+   connection - A valid VixDiskLibConnect to manipulate hosted disks.
+   path - File path for the virtual disk to be grown.
+   capacity - New capacity of the virtual disk in sectors.
+   updateGeometry - TRUE if the geometry fields need to be updated 
+   automatically.
+   progressFunc - A pointer to a function of type VixDiskLibProgressFunc.
+   VixDiskLib will call this function periodically to update progress.
+   progressCallbackData - Opaque data that VixDiskLib will pass while calling 
+   progressFunc.
+ 
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* VixDiskLib_Grow() can only grow hosted disks.
+
+[example]
+[code]
+   vixError = VixDiskLib_Grow(appGlobals.connection,
+                              appGlobals.diskPath,
+                              size,
+                              FALSE,
+                              GrowProgressFunc,
+                              NULL);
+[endcode]
+

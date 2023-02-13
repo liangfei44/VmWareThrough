@@ -1,0 +1,34 @@
+[name]
+VixDiskLib_GetTransportMode
+
+[description]
+[code]
+const char *
+VixDiskLib_GetTransportMode(VixDiskLibHandle diskHandle);
+[endcode]
+
+Returns a pointer to a static string identifying the transport mode that
+is used to access the virtual disk's data.
+
+If a disk was opened through a connection obtained by VixDiskLib_Connect(),
+the return value is "file" for a hosted disk and "nbd" for a managed disk.
+
+[parameters]
+   diskHandle - Handle to an open virtual disk.
+
+[return]
+Returns a static string identifying the transport mode used to open the disk.
+Returns NULL if diskHandle is a NULL handle.
+
+[remarks]
+* A list of known transport modes is returned by VixDiskLib_ListTransportModes().
+* The "file" and "nbd" modes are built into VixDiskLib so they are always recognized.
+* Calling VixDiskLib_ConnectEx() instead of VixDiskLib_Connect() enables a wider range
+  of transport modes, some of which result in better I/O performance when accessing
+  managed disks on shared storage or when running inside a virtual machine.
+
+[example]
+[code]
+   printf("Using transport mode: %s\n", VixDiskLib_GetTransportMode(diskHandle));
+[endcode]
+

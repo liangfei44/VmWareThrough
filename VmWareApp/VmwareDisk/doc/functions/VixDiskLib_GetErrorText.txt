@@ -1,0 +1,26 @@
+[name]
+VixDiskLib_GetErrorText
+
+[description]
+[code]
+char*
+VixDiskLib_GetErrorText(VixError vixErrorCode, const char* locale);
+[endcode]
+
+This function returns the description for a VixDiskLib error code. The 
+ returned value must be unallocated using VixDiskLib_FreeErrorText().
+
+[parameters]
+   vixErrorCode - Error code.
+   locale - Unused, should be set to NULL in early releases.
+
+[return]
+The descriptive text for the error code. NULL if no message is found.
+
+[example]
+[code]
+   char* msg = VixDiskLib_GetErrorText(errCode, NULL);
+   cout <<  msg << endl;
+   VixDiskLib_FreeErrorText(msg);
+[endcode]
+

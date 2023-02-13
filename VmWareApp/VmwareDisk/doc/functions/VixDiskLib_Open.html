@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Open</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Open(const VixDiskLibConnection connection,
+                const char *path,
+                uint32 flags,
+                VixDiskLibHandle *diskHandle);
+</pre>
+<p>
+This function opens a virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connection</i></dt>
+<dd>
+A valid VixDiskLib connection.
+</dd>
+<dt><i>path</i></dt>
+<dd>
+Path to the virtual disk file. If you want to open a disk that
+          is part of a snapshot, specify the name of the disk as referenced
+          by the snapshot.
+</dd>
+<dt><i>flags</i></dt>
+<dd>
+Bitwise or'ed  combination of VIXDISKLIB_FLAG_OPEN_UNBUFFERED,
+           VIXDISKLIB_FLAG_OPEN_SINGLE_LINK and VIXDISKLIB_FLAG_OPEN_READ_ONLY.
+	   If VixDiskLib_ConnectEx() was called with the readOnly parameter
+	   true, the virtual disk is opened read-only even without the
+	   VIXDISKLIB_FLAG_OPEN_READ_ONLY flag.
+</dd>
+<dt><i>diskHandle</i></dt>
+<dd>
+Pointer to the opened diskHandle. This is an output parameter.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> You can use VIXDISKLIB_FLAG_OPEN_SINGLE_LINK to open a child disk without
+opening the parent file.
+<li> Trying to open a hosted virtual disk with a VixDiskLib connection opened
+for managed disk access will result in failure.
+<li> Trying to open a managed virtual disk with a VixDiskLib connection opened
+for hosted disk access will result in failure.
+<li> When opening a managed disk, provide the canonical path name for the
+virtual disk file.
+<li> Trying to open a local child disk created for a managed disk will fail.
+Use VixDiskLib_Attach() instead.
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_Open(appGlobals.connection,
+                              appGlobals.diskPath,
+                              appGlobals.openFlags,
+                              &srcHandle);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

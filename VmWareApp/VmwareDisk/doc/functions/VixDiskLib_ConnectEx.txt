@@ -1,0 +1,90 @@
+[name]
+VixDiskLib_ConnectEx
+
+[description]
+[code]
+VixError
+VixDiskLib_ConnectEx(const VixDiskLibConnectParams *connectParams,
+                     Bool readOnly,
+                     const char *snapshotRef,
+                     const char *transportModes,
+                     VixDiskLibConnection *connection);
+[endcode]
+
+Create a transport context to access disks belonging to a
+particular snapshot of a particular virtual machine. Using this
+transport context enables callers to open virtual disks using
+the most efficient data access protocol available for managed
+virtual machines, for improved I/O performance.
+
+If you use this call instead of VixDiskLib_Connect(), the additional
+information passed in helps optimize the I/O access path to maximize I/O throughput.
+
+This function opens a connection to VixDiskLib. You can use this connection to
+later request various services from VixDiskLib.
+
+[parameters]
+  connectParams - A structure containing the parameters to establish a connection:
+    * vmxSpec - a managed object ID string specifying the VM, in the form "moref=<moid>"
+    * serverName - host name or IP address of ESX/ESXi or vCenter Server
+    * credType - VIXDISKLIB_CRED_UID, VIXDISKLIB_CRED_SESSIONID, VIXDISKLIB_CRED_TICKETID,
+      or VIXDISKLIB_CRED_SSPI
+    * creds - union to hold credentials: userName/password for UID, cookie/userName/key for others
+    * port - port number to connect through
+  readOnly - Should be set to TRUE if no write access is needed
+             for the disks to be accessed through this connection. In
+             some cases, a more efficient I/O path can be used for read-only access.
+  snapshotRef - A managed object reference to the snapshot of the virtual
+             machine whose disks will be accessed with this connection.
+             Specifying this property is only meaningful if the vmxSpec
+             property in connectParams is set as well.
+  transportModes - An optional list of transport modes that can be
+            used for this connection, separated by colons. If you specify NULL
+            specified (recommended), VixDiskLib's default setting is used.
+            The default setting corresponds to the string
+            returned by VixDiskLib_ListTransportModes().
+
+            If a disk is opened through this connection, VixDiskLib
+            starts with the first entry of the list and attempts to
+            use this transport mode to gain access to the virtual
+            disk. If this does not work, the next item in the list
+            is tried until either the disk is successfully opened
+            or the end of the list is reached.
+  connection - A handle for the connection. This is an output parameter.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* To create a connection to open a managed disk, provide valid credentials for
+  the ESX server that currently hosts the virtual machine owning the virtual disk,
+  or the managing vCenter Server.
+* To create a connection that can open hosted type disks, use null values for
+  vmname, hostname, username, password and port.
+  This is sufficient to establish a connection to the localhost.
+  For hosted type disks, this call is equivalent to using VixDiskLib_Connect().
+* This function blocks until the connection completes.
+* Every call to VixDiskLib_ConnectEx() should have a matching
+  VixDiskLib_Disconnect().
+* When using VixDiskLib_ConnectEx(), some state might have not been cleaned
+  up if the resulting connection was not shut down cleanly. Use
+  VixDiskLib_Cleanup() to remove this extra state.
+
+[example]
+[code]
+   VixDiskLibConnectParams cnxParams = {0};
+   if (appGlobals.isRemote) {
+      cnxParams.vmxSpec = moid-str;
+      cnxParams.serverName = hostName;
+      cnxParams.credType = VIXDISKLIB_CRED_UID;
+      cnxParams.creds.uid.userName = userName;
+      cnxParams.creds.uid.password = password;
+      cnxParams.port = port;
+   }
+   VixError vixError = VixDiskLib_ConnectEx(&cnxParams,
+                                            TRUE,
+                                            "snapshot-47",
+                                            "san:nbd:file",
+                                            &connection);
+[endcode]
+

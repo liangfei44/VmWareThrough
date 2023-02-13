@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLibDiskType</b>
+<h1>Description</h1>
+Type of virtual disk.
+<h1>Values</h1>
+<dl>
+<dt><i>VIXDISKLIB_DISK_MONOLITHIC_SPARSE</i></dt>
+<dd>
+Monolithic file, sparse
+</dd>
+<dt><i>VIXDISKLIB_DISK_MONOLITHIC_FLAT</i></dt>
+<dd>
+Monolithic file, all space pre-allocated
+</dd>
+<dt><i>VIXDISKLIB_DISK_SPLIT_SPARSE</i></dt>
+<dd>
+Disk split into 2GB extents, sparse
+</dd>
+<dt><i>VIXDISKLIB_DISK_SPLIT_FLAT</i></dt>
+<dd>
+Disk split into 2GB extents, pre-allocated
+</dd>
+<dt><i>VIXDISKLIB_DISK_VMFS_FLAT</i></dt>
+<dd>
+ESX 3.0 and above flat disks
+</dd>
+<dt><i>VIXDISKLIB_DISK_STREAM_OPTIMIZED</i></dt>
+<dd>
+Disk format suitable for streaming
+</dd>
+<dt><i>VIXDISKLIB_DISK_VMFS_THIN</i></dt>
+<dd>
+ESX 3.0 and above thin provisioned
+</dd>
+<dt><i>VIXDISKLIB_DISK_VMFS_SPARSE</i></dt>
+<dd>
+ESX 3.0 and above sparse disks
+</dd>
+<dt><i>VIXDISKLIB_DISK_UNKNOWN</i></dt>
+<dd>
+Unknown type
+</dd>
+</dl>
+<h1>Remarks</h1>
+<ul>
+<li> The stream optimized format does not support random I/O.
+</ul>
+<h1>Example</h1>
+<pre>
+   VixDiskLibCreateParams createParams;
+
+   createParams.adapterType = VIXDISKLIB_ADAPTER_SCSI_LSILOGIC;
+   createParams.capacity = 204800;
+   createParams.diskType = VIXDISKLIB_DISK_MONOLITHIC_SPARSE;
+   createParams.hwVersion = VIXDISKLIB_HWVERSION_WORKSTATION_6;
+   VixError vixError = VixDiskLib_Create(appGlobals.connection,
+                                appGlobals.diskPath,
+                                &createParams,
+                                NULL,
+                                NULL);
+   CHECK_AND_THROW(vixError);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

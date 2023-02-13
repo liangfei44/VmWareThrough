@@ -1,0 +1,22 @@
+[name]
+VixDiskLib_FreeErrorText
+
+[description]
+[code]
+void
+VixDiskLib_FreeErrorText(char* vixErrorMsg);
+[endcode]
+
+This function frees the message buffer allocated by VixDiskLib_GetErrorText().
+
+[parameters]
+   vixErrorMsg - VixDiskLib error string returned from a prior call to 
+     VixDiskLib_GetErrorText().
+
+[example]
+[code]
+   char* msg = VixDiskLib_GetErrorText(errCode, NULL);
+   errDescription = msg;
+   VixDiskLib_FreeErrorText(msg);
+[endcode]
+

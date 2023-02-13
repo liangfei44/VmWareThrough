@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Grow</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Grow(VixDiskLibConnection connection,
+                const char *path,
+                VixDiskLibSectorType capacity,
+                Bool updateGeometry,
+                VixDiskLibProgressFunc progressFunc,
+                void *progressCallbackData);
+</pre>
+<p>
+This function grows an existing virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connection</i></dt>
+<dd>
+A valid VixDiskLibConnect to manipulate hosted disks.
+</dd>
+<dt><i>path</i></dt>
+<dd>
+File path for the virtual disk to be grown.
+</dd>
+<dt><i>capacity</i></dt>
+<dd>
+New capacity of the virtual disk in sectors.
+</dd>
+<dt><i>updateGeometry</i></dt>
+<dd>
+TRUE if the geometry fields need to be updated 
+   automatically.
+</dd>
+<dt><i>progressFunc</i></dt>
+<dd>
+A pointer to a function of type VixDiskLibProgressFunc.
+   VixDiskLib will call this function periodically to update progress.
+</dd>
+<dt><i>progressCallbackData</i></dt>
+<dd>
+Opaque data that VixDiskLib will pass while calling 
+   progressFunc.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> VixDiskLib_Grow() can only grow hosted disks.
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_Grow(appGlobals.connection,
+                              appGlobals.diskPath,
+                              size,
+                              FALSE,
+                              GrowProgressFunc,
+                              NULL);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

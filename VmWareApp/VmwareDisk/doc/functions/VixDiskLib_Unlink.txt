@@ -1,0 +1,29 @@
+[name]
+VixDiskLib_Unlink
+
+[description]
+[code]
+VixError
+VixDiskLib_Unlink(VixDiskLibConnection connection,
+                  const char *path);
+[endcode]
+
+Delete the virtual disk including all the extents.
+
+[parameters]
+   connection - A valid vixDiskLib connection to manipulate hosted virtual
+   disks.
+   path - Path name for the virtual disk to be deleted.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* VixDiskLib_Unlink() can only delete hosted disks.
+* If the path refers to a parent virtual disk, the child disk will be orphaned.
+
+[example]
+[code]
+   vixError = VixDiskLib_Unlink(appGlobals.connection,
+                                appGlobals.diskPath);
+[endcode]

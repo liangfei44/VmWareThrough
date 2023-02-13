@@ -1,0 +1,32 @@
+[name]
+VixDiskLib_WriteMetadata
+
+[description]
+[code]
+VixError
+VixDiskLib_WriteMetadata(VixDiskLibHandle diskHandle,
+                         const char *key,
+                         const char *val);
+[endcode]
+
+This function updates the virtual disk metadata with the given <key, value> 
+pair.
+
+[parameters]
+   diskHandle - Handle to an open virtual disk.
+   key - Name of the key.
+   val - Value of the above key.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* This function creates a new <key,value> pair if the given key does not exist.
+* Virtual disk metadata keys and their values are ANSI strings.
+
+[example]
+[code]
+   vixError = VixDiskLib_WriteMetadata(disk.Handle(),
+                                       appGlobals.metaKey,
+                                       appGlobals.metaVal);
+[endcode]

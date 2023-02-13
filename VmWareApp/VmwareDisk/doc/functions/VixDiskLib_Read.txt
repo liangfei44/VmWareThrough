@@ -1,0 +1,37 @@
+[name]
+VixDiskLib_Read
+
+[description]
+[code]
+VixError
+VixDiskLib_Read(VixDiskLibHandle diskHandle,
+                VixDiskLibSectorType startSector,
+                VixDiskLibSectorType numSectors,
+                uint8 *readBuffer);
+[endcode]
+
+This function reads a range of sectors from an open virtual disk.
+
+[parameters]
+   diskHandle - Handle to an open virtual disk.
+   startSector - Beginning sector number.
+   numSectors - Number of sectors to read.
+   readBuffer - Buffer to read the sectors into.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* This function reads the sector data synchronously.
+
+[example]
+[code]
+   for (i = 0; i < appGlobals.numSectors; i++) {
+      VixError vixError = VixDiskLib_Read(disk.Handle(),
+                                          appGlobals.startSector + i,
+                                          1,
+                                          buf);
+      CHECK_AND_THROW(vixError);
+      MyValidateFunc(buf, sizeof buf, 16);
+   }
+[endcode]

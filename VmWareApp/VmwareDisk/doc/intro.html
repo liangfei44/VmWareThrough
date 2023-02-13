@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<TITLE>About the Virtual Disk API</TITLE>
+
+<LINK REL="stylesheet" HREF="foundrydoc.css" CHARSET="ISO-8859-1" TYPE="text/css">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<H1 CLASS="H0-ChapterTitle">
+About the Virtual Disk API</H1>
+
+<P CLASS="B-Body">
+The Virtual Disk API, or VixDiskLib, is a set of function calls to manipulate virtual disk files
+in VMDK format (virtual machine disk). Function-call names and usages are patterned after
+C system calls for file I/O. The Virtual Disk API enables partners and software vendors
+to manage VMDK directly from their applications.</P>
+
+</DIV>
+<DIV>
+<A NAME="about_section"></A>
+
+<H2 CLASS="H1-Heading1">Features of VixDiskLib</H2>
+
+<P CLASS="B-Body">
+VixDiskLib includes a binary component delivered as a Windows user mode DLL,
+or a Linux shared object, both supporting a C/C++ API.
+On Windows the package is delivered as a ZIP file.
+On Linux the package installs under
+/usr/lib/vmware-vix-disklib by default.</P>
+
+<P CLASS="B-Body">
+VixDiskLib duplicates functionality of the command-line utilities <tt>vmware-mount</tt>
+and <tt>vmware-vdiskmanager</tt> with the following additional capabilities:</P>
+<ul>
+<li>It permits random read/write access to data anywhere in a VMDK file.
+<li>It creates and manages redo logs (parent-child disk chaining, or delta links).
+<li>It can read and write disk metadata.
+<li>It is able to delete VMDK files programmatically.
+<li>It supports advanced transports for greater efficiency on vSphere.
+</ul>
+<P CLASS="B-Body">
+For details about VixDiskLib, see the <I>Virtual Disk Programming Guide</I>
+on the VMware documentation Web site.</P>
+
+</DIV>
+<DIV>
+<A NAME="compatibility"></A>
+
+<H2 CLASS="H1-Heading1">Product Compatibility</H2>
+
+<P CLASS="B-Body">
+These library functions can manipulate virtual disks on most recent VMware platform products.</P>
+
+<P CLASS="B-Body">
+For a list of supported platform products and tested guest operating systems,
+see the <I>VDDK Release Notes</I>.</P>
+
+</DIV>
+<DIV>
+<A NAME="compiling"></A>
+<H2 CLASS="H1-Heading1">Programming with VixDiskLib</H2>
+<P CLASS="B-Body">
+An example program is installed in the doc/sample subdirectory,
+including a Makefile for the GNU C compiler on Linux,
+and solution and project files for Visual Studio C++ on Windows.</P>
+<P CLASS="B-Body">
+At the top of your program, include "vixDiskLib.h" along with any other header files you need.</P>
+<P CLASS="B-Body">
+Call VixDiskLib_InitEx() to initialize the library in your application.
+This function takes major and minor version numbers to account for future extensions.
+You can provide your own logging, warning, or panic functions
+to substitute for the default VixDiskLib handlers.
+You can also change the library directory,
+and configure settings by passing a configFilePath.</P>
+<P CLASS="B-Body">
+Call VixDiskLib_Connect() to communicate with a VMware hosted product.
+To connect to the local host, specify null values in the connection parameters
+for virtual machine name, hostname, username, password, and port.</P>
+<P CLASS="B-Body">
+Call VixDiskLib_ConnectEx() to communicate with a VMware managed product such as ESXi.
+You must provide valid credentials for the ESXi host or vCenter Server to access virtual disk.
+This could include virtual machine name, hostname, username, password, and port.
+The VixDiskLib_ConnectEx() function also expects a readOnly boolean,
+an optional snapshotRef, and your preferred transportModes.</P>
+</P>
+<P CLASS="B-Body">
+Call VixDiskLib_Open() to open the virtual disk of a guest virtual machine.
+Pass the connection handle obtained from VixDiskLib_Connect() or VixDiskLib_ConnectEx().
+The VixDiskLib_Open() function also expects path-to-virtual-disk, option flags,
+and a parameter to pass back the resulting disk handle.</P>
+<P CLASS="B-Body">
+Structures and type definitions are declared in the "vixDiskLib.h" include file,
+so you do not need to create them or allocate memory for them.
+VixDiskLibConnection is initialized by a call to VixDiskLib_Connect() or VixDiskLib_ConnectEx().
+VixDiskLibHandle is initialized by a call to VixDiskLib_Open().
+VixDiskLibInfo is filled in by a call to VixDiskLib_GetInfo().</P>
+
+</DIV>
+<DIV>
+<A NAME="types"></A>
+<H2 CLASS="H1-Heading1">Types and Metatypes</H2>
+<P CLASS="B-Body">
+Before calling VixDiskLib_ConnectEx() to connect to a VMware host,
+you initialize the VixDiskLibConnectParams structure with the following information:</P>
+<pre>
+  char               *vmxSpec;    // URL-like spec of the VM
+  char               *serverName; // Name or IP address vCenter or ESXi host
+  VixDiskLibCredType  credType;   // For later expansion with Session ID
+  char               *userName;   // User ID on vCenter or ESXi host
+  char               *password;   // Password on vCenter or ESXi host
+  char               *thumbPrint; // SSL Certificate Thumb Print
+  uint32              port;
+</pre>
+<P CLASS="B-Body">
+Before calling VixDiskLib_Open() to open a virtual disk,
+you initialize the VixDiskLibCreateParams structure with the following information:</P>
+<pre>
+  VixDiskLibDiskType    diskType;    // VMFS or not, monolithic or split, flat or sparse
+  VixDiskLibAdapterType adapterType; // SCSI Buslogic, SCSI LSIlogic, or IDE
+  uint16                hwVersion;   // Virtual hardware version
+  VixDiskLibSectorType  capacity;    // Capacity of virtual disk in sectors
+</pre>
+</P>
+<P CLASS="B-Body">
+Metatypes:
+formatted strings are used for VMX specification and transport mode.
+For example, the string <tt>"san:nbd:file"</tt> specifies preferred transport modes.</P>
+<P CLASS="B-Body">
+Functor prototypes:
+VixDiskLibGenericLogFunc() is a single function to log, warn, and panic.
+VixDiskLibProgressFunc() displays the progress of an operation.
+Both are defined in vixDiskLib.h and provided for use as callbacks.</P>
+</DIV>
+</BODY>
+</HTML>

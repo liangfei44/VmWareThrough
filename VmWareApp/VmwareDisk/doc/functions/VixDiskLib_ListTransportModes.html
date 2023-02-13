@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_ListTransportModes</b>
+<h1>Description</h1>
+<pre>
+const char *
+VixDiskLib_ListTransportModes(void);
+</pre>
+<p>
+Get a list of transport modes known to VixDiskLib. This list is used as the
+default if you call VixDiskLib_ConnectEx() with transportModes set to NULL.
+<p>
+The list of transport modes is a colon-separated string, "file:san:hotadd:nbd"
+for example. See VixDiskLib_ConnectEx() for more details.
+<h1>Parameters</h1>
+<dl>
+none
+</dl>
+<h1>Return Value</h1>
+Returns a string that is a list of plugins. The caller must not
+free the string.
+<h1>Example</h1>
+<pre>
+   printf("Choice of transport modes: %s\n", VixDiskLib_ListTransportModes());
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

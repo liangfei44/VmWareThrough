@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_ReadMetadata</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_ReadMetadata(VixDiskLibHandle diskHandle,
+                        const char *key,
+                        char *buf,
+                        size_t bufLen,
+                        size_t *requiredLen);
+</pre>
+<p>
+This function retrieves the value of the given key from the disk metadata.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+<dt><i>key</i></dt>
+<dd>
+Name of the key.
+</dd>
+<dt><i>buf</i></dt>
+<dd>
+Buffer to fill in the value.
+</dd>
+<dt><i>bufLen</i></dt>
+<dd>
+Length of the buffer for the value.
+</dd>
+<dt><i>requiredLen</i></dt>
+<dd>
+Length of the key's value in bytes.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> Each virtual disk has a small amount of space to save arbitrary &lt;key,value&gt;
+pairs.
+<li> Both key and value can be only ANSI strings.
+<li> If bufLen is less than the space required, VixDiskLib_ReadMetadata() will 
+not modify the keys buffer and will return VIX_E_BUFFER_TOOSMALL.
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_ReadMetadata(disk.Handle(),
+                                      appGlobals.metaKey,
+                                      &val[0],
+                                      requiredLen,
+                                      NULL);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

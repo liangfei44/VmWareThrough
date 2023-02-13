@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_InitEx</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_InitEx(uint32 majorVersion,
+                  uint32 minorVersion,
+                  VixDiskLibGenericLogFunc *log,
+                  VixDiskLibGenericLogFunc *warn,
+                  VixDiskLibGenericLogFunc *panic,
+                  const char *libDir,
+                  const char *configFilePath);
+</pre>
+<p>
+This function initializes VixDiskLib.
+<h1>Parameters</h1>
+<dl>
+<dt><i>majorVersion</i></dt>
+<dd>
+Major version number of VixDiskLib (VDDK release number).
+</dd>
+<dt><i>minorVersion</i></dt>
+<dd>
+Minor version number of VixDiskLib (VDDK dot release number).
+</dd>
+<dt><i>log</i></dt>
+<dd>
+User defined function to write log messages.
+</dd>
+<dt><i>warn</i></dt>
+<dd>
+User defined function to write warning messages.
+          In addition, VixDiskLib also writes this message to stderr.
+</dd>
+<dt><i>panic</i></dt>
+<dd>
+User defined function to write panic message.
+</dd>
+<dt><i>libDir</i></dt>
+<dd>
+A directory path to locate dependent DLL / shared objects
+            (e.g vixDiskLibVim.dll, libeay32.dll). Can be NULL.
+</dd>
+<dt><i>configFilePath</i></dt>
+<dd>
+Location of the config file in local encoding. Can be NULL.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> VixDiskLib_InitEx() must be the first VixDiskLib function to be called.
+<li> Due to internationalization, you may not call VixDiskLib_InitEx() more than once per process.
+<li> In a multi-threaded program, it is the application programmer's responsibility
+to serialize writing to the log file.
+<li> VixDiskLib_InitEx() must be matched with VixDiskLib_Exit() near end of program.
+<li> Calling VixDiskLib_InitEx() with NULL parameters for log, warn, and panic results in
+VixDiskLib creating and writing to a default log file.
+<li> Passing NULL as configFilePath causes VixDiskLib to choose default configuration parameters.
+<li> For a list of supported name/value pairs in the configFile,
+see the Virtual Disk Programming Guide.
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_InitEx(VIXDISKLIB_VERSION_MAJOR,
+                                VIXDISKLIB_VERSION_MINOR,
+                                LogFunction, WarningFunction, PanicFunction,
+                                "C:\\Program Files\\Super Backup Company\\Super Backup 1.0",
+                                "C:\\Documents And Settings\\All Users\\Application Data\\Super Backup 1.0\\vixdisklib.ini");
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

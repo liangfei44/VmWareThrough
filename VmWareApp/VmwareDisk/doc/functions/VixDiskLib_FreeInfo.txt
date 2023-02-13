@@ -1,0 +1,22 @@
+[name]
+VixDiskLib_FreeInfo
+
+[description]
+[code]
+void
+VixDiskLib_FreeInfo(VixDiskLibInfo *diskInfo);
+[endcode]
+
+This function frees the memory allocated by VixDiskLib_GetInfo().
+
+[parameters]
+   diskInfo - A pointer to VixDiskLibInfo structure that was returned from
+   a prior call to VixDiskLib_GetInfo().
+
+[example]
+[code]
+   vixError = VixDiskLib_GetInfo(disk.Handle(), &info);
+   cout << "capacity = " << info->capacity << " sectors" << endl;
+   VixDiskLib_FreeInfo(info);
+[endcode]
+

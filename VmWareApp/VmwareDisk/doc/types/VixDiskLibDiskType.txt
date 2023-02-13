@@ -1,0 +1,36 @@
+[name]
+VixDiskLibDiskType
+
+[description]
+Type of virtual disk.
+
+[values]
+VIXDISKLIB_DISK_MONOLITHIC_SPARSE - Monolithic file, sparse
+VIXDISKLIB_DISK_MONOLITHIC_FLAT  -  Monolithic file, all space pre-allocated
+VIXDISKLIB_DISK_SPLIT_SPARSE - Disk split into 2GB extents, sparse
+VIXDISKLIB_DISK_SPLIT_FLAT - Disk split into 2GB extents, pre-allocated
+VIXDISKLIB_DISK_VMFS_FLAT - ESX 3.0 and above flat disks
+VIXDISKLIB_DISK_STREAM_OPTIMIZED - Disk format suitable for streaming
+VIXDISKLIB_DISK_VMFS_THIN - ESX 3.0 and above thin provisioned
+VIXDISKLIB_DISK_VMFS_SPARSE - ESX 3.0 and above sparse disks
+VIXDISKLIB_DISK_UNKNOWN - Unknown type
+
+[remarks]
+* The stream optimized format does not support random I/O.
+
+[example]
+[code]
+   VixDiskLibCreateParams createParams;
+
+   createParams.adapterType = VIXDISKLIB_ADAPTER_SCSI_LSILOGIC;
+   createParams.capacity = 204800;
+   createParams.diskType = VIXDISKLIB_DISK_MONOLITHIC_SPARSE;
+   createParams.hwVersion = VIXDISKLIB_HWVERSION_WORKSTATION_6;
+   VixError vixError = VixDiskLib_Create(appGlobals.connection,
+                                appGlobals.diskPath,
+                                &createParams,
+                                NULL,
+                                NULL);
+   CHECK_AND_THROW(vixError);
+[endcode]
+

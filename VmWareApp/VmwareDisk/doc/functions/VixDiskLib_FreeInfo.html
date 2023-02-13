@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_FreeInfo</b>
+<h1>Description</h1>
+<pre>
+void
+VixDiskLib_FreeInfo(VixDiskLibInfo *diskInfo);
+</pre>
+<p>
+This function frees the memory allocated by VixDiskLib_GetInfo().
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskInfo</i></dt>
+<dd>
+A pointer to VixDiskLibInfo structure that was returned from
+   a prior call to VixDiskLib_GetInfo().
+</dd>
+</dl>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_GetInfo(disk.Handle(), &info);
+   cout &lt;&lt; "capacity = " &lt;&lt; info-&gt;capacity &lt;&lt; " sectors" &lt;&lt; endl;
+   VixDiskLib_FreeInfo(info);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Rename</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Rename(const char *srcFileName
+                  const char *dstFileName);
+</pre>
+<p>
+Renames a virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>srcFileName</i></dt>
+<dd>
+Original path name for the virtual disk to be renamed.
+</dd>
+<dt><i>dstFileName</i></dt>
+<dd>
+New name for the virtual disk.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_Rename(oldGlobals.diskpath,
+                                newGlobals.diskpath);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

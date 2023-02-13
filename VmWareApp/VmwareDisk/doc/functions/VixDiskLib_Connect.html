@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Connect</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Connect(const VixDiskLibConnectParams *connectParams,
+                   VixDiskLibConnection *connection);
+</pre>
+<p>
+This function opens a connection to VixDiskLib. You can use this connection to 
+later on request various services from VixDiskLib.
+<p>
+See also VixDiskLib_ConnectEx(), which has additional parameters and can open
+more efficient connections to managed disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connectParams</i></dt>
+<dd>
+A struct containing the parameters to establish a connection.
+</dd>
+<dt><i>connection</i></dt>
+<dd>
+A handle for the connection. This is an output parameter.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> To create a connection that can open hosted type disks, use null values for
+vmname, hostname, username, password and port. This establishes a connection
+to the localhost.
+<li> To create a connection to open a managed disk, provide valid credentials for
+an ESX server that can access the virtual disk.
+<li> This function blocks until the connection completes.
+<li> Every call to VixDiskLib_Connect() should have a matching 
+VixDiskLib_Disconnect().
+</ul>
+<h1>Example</h1>
+<pre>
+   VixDiskLibConnectParams cnxParams = {0};
+   if (appGlobals.isRemote) {
+      cnxParams.vmName = NULL;
+      cnxParams.serverName = hostName;
+      cnxParams.credType = VIXDISKLIB_CRED_UID;
+      cnxParams.creds.uid.userName = userName;
+      cnxParams.creds.uid.password = password;
+      cnxParams.port = port;
+   }
+   VixError vixError = VixDiskLib_Connect(&cnxParams,
+                                          &connection);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

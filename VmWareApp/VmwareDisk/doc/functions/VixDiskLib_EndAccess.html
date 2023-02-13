@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_EndAccess</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_EndAccess(const VixDiskLibConnectParams *connectParams,
+                     const char *identity);
+</pre>
+<p>
+This function is used to notify the host of a virtual machine that the virtual
+machine disks are closed and that the operations which rely on the virtual
+machine disks to be closed can now be allowed.
+<p>
+This must be called after closing all of the disk belonging to the virtual
+machine, and after deleting the snapshot of the virtual machine.
+<p>
+Normally, this function is called after previously calling
+VixDiskLib_PrepareForAccess, but it may be called as a matter of cleaning up
+after a program crash.
+<p>
+See also VixDiskLib_PrepareForAccess().
+<h1>Parameters</h1>
+<dl>
+<dt><i>connectParams</i></dt>
+<dd>
+A struct containing the parameters to establish a connection.
+</dd>
+<dt><i>identity</i></dt>
+<dd>
+An arbitrary string identifying the application.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> The connection parameters must always indicate one virtual machine.
+<li> To resume operations after closing a managed disk, provide valid credentials
+for an ESX server or Virtual Center that can access the virtual machine
+belonging to that disk.
+</ul>
+<h1>Example</h1>
+<pre>
+   VixError vixError;
+   VixDiskLibConnectParams cnxParams = {0};
+   cnxParams.vmName = NULL;
+   cnxParams.serverName = hostName;
+   cnxParams.credType = VIXDISKLIB_CRED_UID;
+   cnxParams.creds.uid.userName = userName;
+   cnxParams.creds.uid.password = password;
+   cnxParams.port = port;
+   vixError = VixDiskLib_EndAccess(&cnxParams, "myApp");
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

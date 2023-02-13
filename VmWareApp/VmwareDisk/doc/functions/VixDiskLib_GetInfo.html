@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_GetInfo</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_GetInfo(VixDiskLibHandle diskHandle,
+                   VixDiskLibInfo **info);
+</pre>
+<p>
+Retrieves information for a Virtual Disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+<dt><i>info</i></dt>
+<dd>
+Pointer to a Pointer to VixDiskLibInfo structure. VixDiskLib will 
+   allocate and fill this structure with the details of the disk.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> For a child disk, parentFile member in the Info structure only provides 
+a hint.
+<li> VixDiskLib_FreeInfo() must be called to free the memory allocated during
+VixDiskLib_GetInfo(). Not doing so will result in a memory leak.
+</ul>
+<h1>Example</h1>
+<pre>
+   VixDiskLibInfo *info = NULL;
+
+   vixError = VixDiskLib_GetInfo(disk.Handle(), &info);
+   cout &lt;&lt; "capacity = " &lt;&lt; info-&gt;capacity &lt;&lt; " sectors" &lt;&lt; endl;
+   VixDiskLib_FreeInfo(info);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Close</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Close(VixDiskLibHandle diskHandle);
+</pre>
+<p>
+This function closes an open virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> You should not use the diskHandle after the call to VixDiskLib_Close().
+</ul>
+<h1>Example</h1>
+<pre>
+   VixDiskLib_Close(srcHandle);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

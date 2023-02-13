@@ -1,0 +1,42 @@
+[name]
+VixDiskLib_GetMetadataKeys
+[description]
+[code]
+VixError
+VixDiskLib_GetMetadataKeys(VixDiskLibHandle diskHandle,
+                           char *keysBuffer,
+                           size_t bufLen,
+                           size_t *requiredLen);
+[endcode]
+This function retrieves all the existing keys in the meta data of a virtual
+ disk.
+
+[parameters]
+   diskHandle - A valid handle to an open virtual disk.
+   keysBuffer - Buffer to hold the keys in the metadata store, can be NULL
+                if you want to test for errors or get requiredLen.
+   bufLen - Size of the buffer keysBuffer.
+   requiredLen - Space, in number of bytes, required for all the keys.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* Each virtual disk has a small amount of space to save arbitrary <key,value>
+  pairs.
+* Both key and value can be only ANSI strings.
+* If bufLen is less than the space required, VixDiskLib_GetMetadataKeys() will 
+  not modify the keysBuffer and will return VIX_E_BUFFER_TOOSMALL.
+
+[example]
+[code]
+   VixError vixError = VixDiskLib_GetMetadataKeys(disk.Handle(),
+                                                  NULL, 0, &requiredLen);
+   if (vixError != VIX_OK && vixError != VIX_E_BUFFER_TOOSMALL) {
+      THROW_ERROR(vixError);
+   }
+   std::vector<char> buf(requiredLen);
+   vixError = VixDiskLib_GetMetadataKeys(disk.Handle(),
+                                         &buf[0], requiredLen, NULL);
+   CHECK_AND_THROW(vixError);
+[endcode]

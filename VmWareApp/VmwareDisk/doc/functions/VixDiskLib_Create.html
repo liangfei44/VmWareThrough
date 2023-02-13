@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Create</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Create(const VixDiskLibConnection connection,
+                  const char *path,
+                  const VixDiskLibCreateParams *createParams,
+                  VixDiskLibProgressFunc progressFunc,
+                  void *progressCallbackData);
+
+</pre>
+This function creates a virtual disk as specified in createParams.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connection</i></dt>
+<dd>
+A valid VixDiskLib connection created to manipulate hosted 
+     disks. See VixDiskLib_Connect() for instructions on how to create
+     such a connection.
+</dd>
+<dt><i>path</i></dt>
+<dd>
+Path name for the newly created Virtual Disk file.
+</dd>
+<dt><i>createParams</i></dt>
+<dd>
+Specification for the new Virtual Disk.
+</dd>
+<dt><i>progressFunc</i></dt>
+<dd>
+A pointer to a function of type VixDiskLibProgressFunc.
+     VixDiskLib will call this function periodically to update progress.
+</dd>
+<dt><i>progressCallbackData</i></dt>
+<dd>
+Opaque data that VixDiskLib will pass to
+     progressFunc.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> VixDiskLib_Create() can or create managed disks on a datastore location.
+To create such a disk, first create a hosted type disk and use
+VixDiskLib_Clone() to convert the virtual disk to a managed disk.
+</ul>
+<h1>Example</h1>
+<pre>
+   VixError vixError = VixDiskLib_Create(appGlobals.connection, 
+                                         appGlobals.diskPath, 
+                                         &createParams,
+                                         NULL,
+                                         NULL);
+
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

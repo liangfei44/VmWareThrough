@@ -1,0 +1,38 @@
+[name]
+VixDiskLib_Write
+
+[description]
+[code]
+VixError
+VixDiskLib_Write(VixDiskLibHandle diskHandle,
+                 VixDiskLibSectorType startSector,
+                 VixDiskLibSectorType numSectors,
+                 const uint8 *writeBuffer);
+[endcode]
+
+This function writes to an open virtual disk.
+
+[parameters]
+   diskHandle - Handle to an open virtual disk.
+   startSector - Beginning sector number.
+   numSectors - Number of sectors to write.
+   writeBuffer - Data to write.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[example]
+[code]
+   uint8 buf[VIXDISKLIB_SECTOR_SIZE];
+   VixDiskLibSectorType startSector;
+
+   memset(buf, appGlobals.filler, sizeof buf);
+   for (startSector = 0; startSector < appGlobals.numSectors; ++startSector) {
+      VixError vixError;
+      vixError = VixDiskLib_Write(disk.Handle(),
+                                   appGlobals.startSector + startSector,
+                                   1, buf);
+      CHECK_AND_THROW(vixError);
+   }
+[endcode]
+

@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_CreateChild</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_CreateChild(VixDiskLibHandle diskHandle,
+                       const char *childPath,
+                       VixDiskLibDiskType diskType,
+                       VixDiskLibProgressFunc progressFunc,
+                       void *progressCallbackData);
+</pre>
+This function creates a child disk (redo log) for a hosted virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk. Result of VixDiskLib_Open().
+</dd>
+<dt><i>childPath</i></dt>
+<dd>
+Path to the child disk file name.
+</dd>
+<dt><i>diskType</i></dt>
+<dd>
+VIXDISKLIB_DISK_MONOLITHIC_SPARSE or
+    VIXDISKLIB_DISK_SPLIT_SPARSE. 
+</dd>
+<dt><i>progressFunc</i></dt>
+<dd>
+A pointer to a function of type VixDiskLibProgressFunc.
+     VixDiskLib will call this function periodically to update progress.
+</dd>
+<dt><i>progressCallbackData</i></dt>
+<dd>
+Opaque data that VixDiskLib will pass to
+     progressFunc.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> VixDiskLib_CreateChild() can create child disks only for hosted virtual disks.
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_CreateChild(parentDisk.Handle(),
+                                     appGlobals.diskPath,
+                                     VIXDISKLIB_DISK_MONOLITHIC_SPARSE,
+                                     NULL, NULL);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

@@ -1,0 +1,21 @@
+[name]
+VixDiskLib_Exit
+
+[description]
+[code]
+void
+VixDiskLib_Exit(void);
+[endcode]
+
+This function releases all resources held by VixDiskLib.
+
+[return]
+None.
+ 
+[remarks]
+* Every VixDiskLib_Init() must have a matching call to VixDiskLib_Exit().
+
+[example]
+[code]
+   VixDiskLib_Exit();
+[endcode]

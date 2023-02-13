@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Cleanup</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Cleanup(const VixDiskLibConnectParams *connectParams,
+                   uint32 *numCleanedUp, uint32 *numRemaining);
+</pre>
+<p>
+Perform a cleanup after an unclean shutdown of an application using
+VixDiskLib. Unclean shutdown is possible even with VixDiskLib_Disconnect().
+<p>
+When using VixDiskLib_ConnectEx(), some state might have not been purged
+if the resulting connection was not shut down cleanly. Use VixDiskLib_Cleanup()
+to remove this extra state.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connectParams</i></dt>
+<dd>
+Hostname and login credentials to connect to
+        a host managing virtual machines that were accessed and need 
+        cleanup. While VixDiskLib_Cleanup() can be invoked for local
+        connections as well, it is a no-op in that case. Also, the
+        vmxSpec property of connectParams should be set to NULL.
+</dd>
+<dt><i>numCleanedUp</i></dt>
+<dd>
+This is an output parameter: Number of virtual machines that were 
+        successfully cleaned up. Can be NULL.
+</dd>
+<dt><i>numRemaining</i></dt>
+<dd>
+This is an output parameter: Number of virtual machines that still
+        require cleaning up. Can be NULL.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if all virtual machines were successfully cleaned up or if no
+virtual machines required cleanup, otherwise the appropriate VIX error code.
+You can use numRemaining to check for the number of virtual machines requiring cleanup.
+<h1>Example</h1>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

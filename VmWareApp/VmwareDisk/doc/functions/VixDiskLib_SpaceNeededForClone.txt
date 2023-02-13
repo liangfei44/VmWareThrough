@@ -1,0 +1,32 @@
+[name]
+VixDiskLib_SpaceNeededForClone
+
+[description]
+[code]
+VixError
+VixDiskLib_SpaceNeededForClone(VixDiskLibHandle srcHandle,
+                               VixDiskLibDiskType diskType,
+                               uint64 *spaceNeeded);
+[endcode]
+
+This function computes the space required in bytes to clone a virtual disk.
+
+[parameters]
+   srcHandle - Handle to the disk to be copied.
+   diskType - The type of the to be created disk. If diskType is set to 
+     VIXDISKLIB_DISK_UNKNOWN, the source disk type is assumed.
+   spaceNeeded - Space needed in bytes for the new disk.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+ 
+[remarks]
+* Calculations take into account possible format conversion.
+
+[example]
+[code]
+   vixError = VixDiskLib_SpaceNeededForClone(child.Handle(),
+                                             VIXDISKLIB_DISK_VMFS_FLAT,
+                                             &spaceReq);
+[endcode]
+

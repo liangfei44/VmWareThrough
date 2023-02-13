@@ -1,0 +1,35 @@
+[name]
+VixDiskLib_Cleanup
+
+[description]
+[code]
+VixError
+VixDiskLib_Cleanup(const VixDiskLibConnectParams *connectParams,
+                   uint32 *numCleanedUp, uint32 *numRemaining);
+[endcode]
+
+Perform a cleanup after an unclean shutdown of an application using
+VixDiskLib. Unclean shutdown is possible even with VixDiskLib_Disconnect().
+
+When using VixDiskLib_ConnectEx(), some state might have not been purged
+if the resulting connection was not shut down cleanly. Use VixDiskLib_Cleanup()
+to remove this extra state.
+
+[parameters]
+  connectParams - Hostname and login credentials to connect to
+        a host managing virtual machines that were accessed and need 
+        cleanup. While VixDiskLib_Cleanup() can be invoked for local
+        connections as well, it is a no-op in that case. Also, the
+        vmxSpec property of connectParams should be set to NULL.
+  numCleanedUp - This is an output parameter: Number of virtual machines that were 
+        successfully cleaned up. Can be NULL.
+  numRemaining - This is an output parameter: Number of virtual machines that still
+        require cleaning up. Can be NULL.
+
+[return]
+VIX_OK if all virtual machines were successfully cleaned up or if no
+virtual machines required cleanup, otherwise the appropriate VIX error code.
+You can use numRemaining to check for the number of virtual machines requiring cleanup.
+
+[example]
+

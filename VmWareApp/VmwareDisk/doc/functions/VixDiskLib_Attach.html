@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Attach</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Attach(VixDiskLibHandle parentHandle, VixDiskLibHandle childHandle);
+</pre>
+<p>
+This function attaches the child disk chain to the parent disk chain. 
+ The parent disk handle is invalid after attaching. The child handle
+ represents the combined disk chain.
+<h1>Parameters</h1>
+<dl>
+<dt><i>parentDiskHandle</i></dt>
+<dd>
+Handle to the parent virtual disk chain. 
+</dd>
+<dt><i>childDiskHandle</i></dt>
+<dd>
+Handle to the child virtual disk chain. 
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> Do not use the parentDiskhandle after the call to VixDiskLib_Attach().
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_Attach(parent.Handle(), child.Handle());
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

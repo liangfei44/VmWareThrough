@@ -1,0 +1,36 @@
+[name]
+VixDiskLib_GetInfo
+
+[description]
+[code]
+VixError
+VixDiskLib_GetInfo(VixDiskLibHandle diskHandle,
+                   VixDiskLibInfo **info);
+[endcode]
+
+Retrieves information for a Virtual Disk.
+
+[parameters]
+   diskHandle - Handle to an open virtual disk.
+   info - Pointer to a Pointer to VixDiskLibInfo structure. VixDiskLib will 
+   allocate and fill this structure with the details of the disk.
+
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* For a child disk, parentFile member in the Info structure only provides 
+  a hint.
+* VixDiskLib_FreeInfo() must be called to free the memory allocated during
+  VixDiskLib_GetInfo(). Not doing so will result in a memory leak.
+
+[example]
+[code]
+   VixDiskLibInfo *info = NULL;
+
+   vixError = VixDiskLib_GetInfo(disk.Handle(), &info);
+   cout << "capacity = " << info->capacity << " sectors" << endl;
+   VixDiskLib_FreeInfo(info);
+[endcode]
+

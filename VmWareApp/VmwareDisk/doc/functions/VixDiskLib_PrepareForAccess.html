@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_PrepareForAccess</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_PrepareForAccess(const VixDiskLibConnectParams *connectParams,
+                            const char *identity);
+</pre>
+<p>
+This function is used to notify the host of the virtual machine that the disks
+of the virtual machine will be opened.  The host disables operations on the
+virtual machine that may be adversely affected if they are performed while the
+disks are open by a third party application.
+<p>
+This function must be called before creating a snapshot on the virtual machine
+or opening any disks of the virtual machine
+<p>
+See also VixDiskLib_EndAccess.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connectParams</i></dt>
+<dd>
+A struct containing the parameters to establish a connection.
+</dd>
+<dt><i>identity</i></dt>
+<dd>
+An arbitrary string identifying the application.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> The connection parameters must always indicate one virtual machine.
+<li> To enable operations that open a managed disk, provide valid credentials for
+an ESX server or Virtual Center that can access the virtual disk.
+<li> Every call to VixDiskLib_PrepareForAccess() should have a matching call to
+VixDiskLib_EndAccess().
+</ul>
+<h1>Example</h1>
+<pre>
+   VixError vixError;
+   VixDiskLibConnectParams cnxParams = {0};
+   cnxParams.vmName = "moRef=XXXX";
+   cnxParams.serverName = hostName;
+   cnxParams.credType = VIXDISKLIB_CRED_UID;
+   cnxParams.creds.uid.userName = userName;
+   cnxParams.creds.uid.password = password;
+   cnxParams.port = port;
+   vixError = VixDiskLib_PrepareForAccess(&cnxParams, "myApp");
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

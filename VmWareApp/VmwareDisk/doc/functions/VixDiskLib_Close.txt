@@ -1,0 +1,24 @@
+[name]
+VixDiskLib_Close
+
+[description]
+[code]
+VixError
+VixDiskLib_Close(VixDiskLibHandle diskHandle);
+[endcode]
+
+This function closes an open virtual disk.
+
+[parameters]
+   diskHandle - Handle to an open virtual disk.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* You should not use the diskHandle after the call to VixDiskLib_Close().
+
+[example]
+[code]
+   VixDiskLib_Close(srcHandle);
+[endcode]

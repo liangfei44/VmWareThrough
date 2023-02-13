@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Defragment</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Defragment(VixDiskLibHandle handle,
+                      VixDiskLibProgressFunc progressFunc,
+                      void *progressCallbackData);
+</pre>
+<p>
+This function defragments an existing virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+<dt><i>progressFunc</i></dt>
+<dd>
+A pointer to a function of type VixDiskLibProgressFunc.
+   VixDiskLib will call this function periodically to update progress.
+</dd>
+<dt><i>progressCallbackData</i></dt>
+<dd>
+Opaque data that VixDiskLib will pass while calling 
+   progressFunc.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> VixDiskLib_Defragment() can only defragment hosted disks.
+<li> VixDiskLib_Defragment() is only applicable for sparse disks.
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_Defragment(disk.Handle(),
+                                    DefragProgressFunc,
+                                    NULL);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

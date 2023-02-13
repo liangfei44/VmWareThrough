@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_GetMetadataKeys</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_GetMetadataKeys(VixDiskLibHandle diskHandle,
+                           char *keysBuffer,
+                           size_t bufLen,
+                           size_t *requiredLen);
+</pre>
+This function retrieves all the existing keys in the meta data of a virtual
+ disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+A valid handle to an open virtual disk.
+</dd>
+<dt><i>keysBuffer</i></dt>
+<dd>
+Buffer to hold the keys in the metadata store, can be NULL
+                if you want to test for errors or get requiredLen.
+</dd>
+<dt><i>bufLen</i></dt>
+<dd>
+Size of the buffer keysBuffer.
+</dd>
+<dt><i>requiredLen</i></dt>
+<dd>
+Space, in number of bytes, required for all the keys.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> Each virtual disk has a small amount of space to save arbitrary &lt;key,value&gt;
+pairs.
+<li> Both key and value can be only ANSI strings.
+<li> If bufLen is less than the space required, VixDiskLib_GetMetadataKeys() will 
+not modify the keysBuffer and will return VIX_E_BUFFER_TOOSMALL.
+</ul>
+<h1>Example</h1>
+<pre>
+   VixError vixError = VixDiskLib_GetMetadataKeys(disk.Handle(),
+                                                  NULL, 0, &requiredLen);
+   if (vixError != VIX_OK && vixError != VIX_E_BUFFER_TOOSMALL) {
+      THROW_ERROR(vixError);
+   }
+   std::vector&lt;char&gt; buf(requiredLen);
+   vixError = VixDiskLib_GetMetadataKeys(disk.Handle(),
+                                         &buf[0], requiredLen, NULL);
+   CHECK_AND_THROW(vixError);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_CheckRepair</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_CheckRepair(const VixDiskLibConnection connection,
+                       const char *filename,
+                       Bool repair);
+</pre>
+<p>
+Check the metadata of a sparse disk, and if indicated, repair that metadata.
+<p>
+Sparse disks only occupy space on the datastore if an area of that 
+disk is actually used.  The metadata is used to track what parts of the disk
+are used.
+<h1>Parameters</h1>
+<dl>
+<dt><i>connection</i></dt>
+<dd>
+A valid VixDiskLib connection.
+</dd>
+<dt><i>filename</i></dt>
+<dd>
+The file name of the disk to be examined/repaired. The file name
+             must include the path to the disk including the data store.
+</dd>
+<dt><i>repair</i></dt>
+<dd>
+If this flag is TRUE, the disk will be repaired if it is damaged
+           and it is repairable.  Repair will not be attempted if the disk is
+           marked as unrepairable.  If this flag is FALSE, then no repair will
+           be attempted.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<h1>Example</h1>
+<pre>
+   VixError vixError;
+   char *filename = "[datastore] /folder/diskname.vmdk";
+
+   vixError = VixDiskLib_CheckRepair(connection, filename, TRUE);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

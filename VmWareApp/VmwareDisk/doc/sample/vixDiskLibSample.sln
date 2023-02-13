@@ -1,0 +1,20 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vixDiskLibSample", "vixDiskLibSample.vcproj", "{67487ACB-837C-40ED-A387-B4E0031C2260}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationiPlatforms) = preSolution
+		Debug|x64 = Debug|x64 
+		Release|x64 = Release|x64 
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67487ACB-837C-40ED-A387-B4E0031C2260}.Debug|x64.ActiveCfg = Debug|x64 
+		{67487ACB-837C-40ED-A387-B4E0031C2260}.Debug|x64.Build.0 = Debug|x64 
+		{67487ACB-837C-40ED-A387-B4E0031C2260}.Release|x64.ActiveCfg = Release|x64 
+		{67487ACB-837C-40ED-A387-B4E0031C2260}.Release|x64.Build.0 = Release|x64 
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

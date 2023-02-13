@@ -1,0 +1,14 @@
+#pragma once
+#include <windows.h>
+
+typedef enum VMM_PTE_TP {
+	VMM_PTE_TP_NA = 0,
+	VMM_PTE_TP_HARDWARE = 1,
+	VMM_PTE_TP_TRANSITION = 2,
+	VMM_PTE_TP_PROTOTYPE = 3,
+	VMM_PTE_TP_DEMANDZERO = 4,
+	VMM_PTE_TP_COMPRESSED = 5,
+	VMM_PTE_TP_PAGEFILE = 6,
+} VMM_PTE_TP, *PVMM_PTE_TP;
+
+BOOLEAN MemX64ReadPaged(_In_ DWORD64 pte, _In_ DWORD64 DirectoryTableBase, _Out_ PDWORD64 ppa);

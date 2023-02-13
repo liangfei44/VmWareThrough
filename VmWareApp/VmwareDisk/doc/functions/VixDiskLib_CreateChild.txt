@@ -1,0 +1,38 @@
+[name]
+VixDiskLib_CreateChild
+
+[description]
+[code]
+VixError
+VixDiskLib_CreateChild(VixDiskLibHandle diskHandle,
+                       const char *childPath,
+                       VixDiskLibDiskType diskType,
+                       VixDiskLibProgressFunc progressFunc,
+                       void *progressCallbackData);
+[endcode]
+This function creates a child disk (redo log) for a hosted virtual disk.
+
+[parameters]
+   diskHandle - Handle to an open virtual disk. Result of VixDiskLib_Open().
+   childPath - Path to the child disk file name.
+   diskType -  VIXDISKLIB_DISK_MONOLITHIC_SPARSE or
+    VIXDISKLIB_DISK_SPLIT_SPARSE. 
+   progressFunc - A pointer to a function of type VixDiskLibProgressFunc.
+     VixDiskLib will call this function periodically to update progress.
+   progressCallbackData - Opaque data that VixDiskLib will pass to
+     progressFunc.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* VixDiskLib_CreateChild() can create child disks only for hosted virtual disks.
+
+[example]
+[code]
+   vixError = VixDiskLib_CreateChild(parentDisk.Handle(),
+                                     appGlobals.diskPath,
+                                     VIXDISKLIB_DISK_MONOLITHIC_SPARSE,
+                                     NULL, NULL);
+[endcode]
+

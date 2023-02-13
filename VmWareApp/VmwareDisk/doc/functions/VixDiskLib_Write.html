@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_Write</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_Write(VixDiskLibHandle diskHandle,
+                 VixDiskLibSectorType startSector,
+                 VixDiskLibSectorType numSectors,
+                 const uint8 *writeBuffer);
+</pre>
+<p>
+This function writes to an open virtual disk.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+<dt><i>startSector</i></dt>
+<dd>
+Beginning sector number.
+</dd>
+<dt><i>numSectors</i></dt>
+<dd>
+Number of sectors to write.
+</dd>
+<dt><i>writeBuffer</i></dt>
+<dd>
+Data to write.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Example</h1>
+<pre>
+   uint8 buf[VIXDISKLIB_SECTOR_SIZE];
+   VixDiskLibSectorType startSector;
+
+   memset(buf, appGlobals.filler, sizeof buf);
+   for (startSector = 0; startSector &lt; appGlobals.numSectors; ++startSector) {
+      VixError vixError;
+      vixError = VixDiskLib_Write(disk.Handle(),
+                                   appGlobals.startSector + startSector,
+                                   1, buf);
+      CHECK_AND_THROW(vixError);
+   }
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

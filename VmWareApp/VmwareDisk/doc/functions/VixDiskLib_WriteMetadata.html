@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_WriteMetadata</b>
+<h1>Description</h1>
+<pre>
+VixError
+VixDiskLib_WriteMetadata(VixDiskLibHandle diskHandle,
+                         const char *key,
+                         const char *val);
+</pre>
+<p>
+This function updates the virtual disk metadata with the given &lt;key, value&gt; 
+pair.
+<h1>Parameters</h1>
+<dl>
+<dt><i>diskHandle</i></dt>
+<dd>
+Handle to an open virtual disk.
+</dd>
+<dt><i>key</i></dt>
+<dd>
+Name of the key.
+</dd>
+<dt><i>val</i></dt>
+<dd>
+Value of the above key.
+</dd>
+</dl>
+<h1>Return Value</h1>
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+<h1>Remarks</h1>
+<ul>
+<li> This function creates a new &lt;key,value&gt; pair if the given key does not exist.
+<li> Virtual disk metadata keys and their values are ANSI strings.
+</ul>
+<h1>Example</h1>
+<pre>
+   vixError = VixDiskLib_WriteMetadata(disk.Handle(),
+                                       appGlobals.metaKey,
+                                       appGlobals.metaVal);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

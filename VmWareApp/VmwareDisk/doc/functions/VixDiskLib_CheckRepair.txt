@@ -1,0 +1,39 @@
+[name]
+VixDiskLib_CheckRepair
+
+[description]
+[code]
+VixError
+VixDiskLib_CheckRepair(const VixDiskLibConnection connection,
+                       const char *filename,
+                       Bool repair);
+[endcode]
+
+Check the metadata of a sparse disk, and if indicated, repair that metadata.
+
+Sparse disks only occupy space on the datastore if an area of that 
+disk is actually used.  The metadata is used to track what parts of the disk
+are used.
+
+[parameters]
+  connection - A valid VixDiskLib connection.
+  filename - The file name of the disk to be examined/repaired. The file name
+             must include the path to the disk including the data store.
+  repair - If this flag is TRUE, the disk will be repaired if it is damaged
+           and it is repairable.  Repair will not be attempted if the disk is
+           marked as unrepairable.  If this flag is FALSE, then no repair will
+           be attempted.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+
+[example]
+[code]
+   VixError vixError;
+   char *filename = "[datastore] /folder/diskname.vmdk";
+
+   vixError = VixDiskLib_CheckRepair(connection, filename, TRUE);
+[endcode]
+

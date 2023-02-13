@@ -1,0 +1,53 @@
+[name]
+VixDiskLib_Clone
+
+[description]
+[code]
+VixError
+VixDiskLib_Clone(const VixDiskLibConnection dstConnection,
+                 const char *dstPath,
+                 const VixDiskLibConnection srcConnection,
+                 const char *srcPath,
+                 const VixDiskLibCreateParams *vixCreateParams,
+                 VixDiskLibProgressFunc progressFunc,
+                 void *progressCallbackData,
+                 Bool  overWrite);
+[endcode]
+
+This function synchronously copies a disk to the destination converting
+ formats as appropriate.
+
+[parameters]
+   dstConnection - A VixDiskLib connection that can access the destination disk.
+   dstPath - Absolute path for the (new) destination disk.
+   srcConnection - A Valid connection that can access the source disk.
+   srcPath - Absolute path for the source disk.
+   createParams - CreationParameters (disktype, hardware type...) for the newly 
+   created disk. When the destination is remote, createParams is currently 
+   ignored and disk with appropriate size and adapter type is created.
+   progressFunc - A pointer to a function of type VixDiskLibProgressFunc.
+   VixDiskLib will call this function periodically to update progress.
+   progressCallbackData - Opaque data that VixDiskLib_Clone() will pass while 
+   calling progressFunc.
+   overWrite - If TRUE, VixDiskLib_Clone() will continue even when the destination
+   file exists.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* It is not possible to directly create a managed disk using VixDiskLib. 
+  The recommended way to create a managed disk is create a hosted disk and
+  use VixDiskLib_Clone() function to copy the disk to a VMFS datastore.
+
+[example]
+[code]
+   vixError = VixDiskLib_Clone(appGlobals.connection,
+                               appGlobals.diskPath,
+                               srcConnection,
+                               appGlobals.srcPath,
+                               &createParams,
+                               CloneProgressFunc,
+                               NULL,   // clientData
+                               TRUE);  // doOverWrite
+[endcode]

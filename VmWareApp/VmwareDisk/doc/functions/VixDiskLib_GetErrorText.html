@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_GetErrorText</b>
+<h1>Description</h1>
+<pre>
+char*
+VixDiskLib_GetErrorText(VixError vixErrorCode, const char* locale);
+</pre>
+<p>
+This function returns the description for a VixDiskLib error code. The 
+ returned value must be unallocated using VixDiskLib_FreeErrorText().
+<h1>Parameters</h1>
+<dl>
+<dt><i>vixErrorCode</i></dt>
+<dd>
+Error code.
+</dd>
+<dt><i>locale</i></dt>
+<dd>
+Unused, should be set to NULL in early releases.
+</dd>
+</dl>
+<h1>Return Value</h1>
+The descriptive text for the error code. NULL if no message is found.
+<h1>Example</h1>
+<pre>
+   char* msg = VixDiskLib_GetErrorText(errCode, NULL);
+   cout &lt;&lt;  msg &lt;&lt; endl;
+   VixDiskLib_FreeErrorText(msg);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.

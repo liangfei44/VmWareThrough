@@ -1,0 +1,47 @@
+[name]
+VixDiskLib_PrepareForAccess
+
+[description]
+[code]
+VixError
+VixDiskLib_PrepareForAccess(const VixDiskLibConnectParams *connectParams,
+                            const char *identity);
+[endcode]
+
+This function is used to notify the host of the virtual machine that the disks
+of the virtual machine will be opened.  The host disables operations on the
+virtual machine that may be adversely affected if they are performed while the
+disks are open by a third party application.
+
+This function must be called before creating a snapshot on the virtual machine
+or opening any disks of the virtual machine
+
+See also VixDiskLib_EndAccess.
+
+[parameters]
+   connectParams - A struct containing the parameters to establish a connection.
+   identity - An arbitrary string identifying the application.
+
+[return]
+VIX_OK if the function succeeded, otherwise an appropriate VIX error code.
+
+[remarks]
+* The connection parameters must always indicate one virtual machine.
+* To enable operations that open a managed disk, provide valid credentials for
+  an ESX server or Virtual Center that can access the virtual disk.
+* Every call to VixDiskLib_PrepareForAccess() should have a matching call to
+  VixDiskLib_EndAccess().
+
+[example]
+[code]
+   VixError vixError;
+   VixDiskLibConnectParams cnxParams = {0};
+   cnxParams.vmName = "moRef=XXXX";
+   cnxParams.serverName = hostName;
+   cnxParams.credType = VIXDISKLIB_CRED_UID;
+   cnxParams.creds.uid.userName = userName;
+   cnxParams.creds.uid.password = password;
+   cnxParams.port = port;
+   vixError = VixDiskLib_PrepareForAccess(&cnxParams, "myApp");
+[endcode]
+

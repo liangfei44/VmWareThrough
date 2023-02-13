@@ -1,0 +1,277 @@
+/************************************************** 
+ *  SDK Techpubs Style Sheet 
+ *  Adapted from the doc-style.css used for the VI API Reference Guide (API Reference)
+ *  For use with manually produced HTML SDK Install Guides, Programming Guides, and
+ *                  for generated API reference documentation
+ *  lcooley@vmware.com; kwiseth@vmware.com
+ *  8-May-2007 Added some tags to handle the generated stuff for VIX-API
+ *  20-April-2007 Added CodeIndent tag
+ *  13-April-2007 Adjusted linespacing on ul/li tags
+ *  31-March-2007 Removing duplicate styles. Attempting to match the VI API Reference (ReferenceGuide) 
+ *                               style sheet (doc-style.css) more closely. Having a bit of trouble with the tables and borders.
+ *  23-March-2007 Still in flux.
+ ***************************************************
+ */
+ 
+.ET-ExampleTitle
+{	
+  font-weight: bold;
+  margin-bottom: 0;
+
+}
+ 
+ .C-Code   {
+	font-size: 12px; font-family: 
+	"Courier New", Courier, monospace; 
+	}
+
+ .C1-CodeIndent1
+    {
+	font-size: 12px; font-family: 
+	"Courier New", Courier, monospace; 
+	margin-left: 3%;
+	}
+
+ 
+ .TT-TableTitle {
+ 	
+  font-weight: bold;
+  }
+ 
+ 
+
+.Code
+    {
+	font-size: 12px; font-family: 
+	"Courier New", Courier, monospace; 
+	}
+
+.CodeIndent
+    {
+	font-size: 12px; font-family: 
+	"Courier New", Courier, monospace; 
+	margin-left: 3%;
+	}
+
+
+.Link
+    {
+	font-size: 12px;
+	font-family: "Courier New", Courier, monospace;
+	Color: Blue;
+
+	margin-left: 3%;
+}
+	
+.Console
+    {
+	font-size: 12px; font-family: 
+	"Courier New", Courier, monospace; 
+	color: #ffffff;
+	font-weight: bold;
+	background: #000000;
+	}
+
+.Indent
+      {
+	margin: 0;
+	padding: 0;
+	padding-left: 40px;
+	margin-bottom: 10px;
+	line-height : 15px;
+}
+
+
+.TableText {
+	FONT-SIZE: 11px; COLOR: #000000; 
+
+}
+.TableHead {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 11px; 
+	COLOR: #000000; 
+	FONT-FAMILY: Arial, Helvetica, sans-serif; 
+	TEXT-DECORATION: none
+}
+.BoldRedText {
+	FONT-WEIGHT: bold;
+	COLOR: #ff0000;
+	TEXT-DECORATION: none
+}
+.Shaded {
+	background : #dadada;
+}
+.BodyCopy {line-height:16pt;}
+.Sub_Head {
+           FONT-FAMILY: Arial, Helvetica, sans-serif;
+           FONT-SIZE: 12px;
+		   line-height: 18px;
+		   font-weight:800;
+		   margin-bottom: 2px;
+		   }
+.Miniscule {font-size: 11px;
+           }
+ul       {
+	margin: 0;
+	padding: 0;
+	padding-left: 20px;
+	margin-bottom: 10px;
+	line-height : 16px;
+}
+li     {
+	font-size: 12px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	padding: 0;
+	line-height : 16px;
+}
+			  
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #000;
+  background-color: #fff;
+}
+
+body.toc {
+  margin: 0;
+  padding: 0;
+}
+
+a         { color: #036; text-decoration: underline; }
+a:visited { color: #036;  text-decoration: underline; }
+a:hover   { color: #3366AA; text-decoration: none; }
+a.breadcrumb {  font-size: 10px;}
+
+h1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #3366AA;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  border-bottom-color: #95a8a6;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #3366AA;
+  margin-top: 25px;
+  padding-bottom: 10px;
+}
+
+h2.index {
+	padding-bottom: 0px;	
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3366AA;
+  margin-top: 25px;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: normal;
+  color: #3366AA;
+  margin-top: 25px;
+}
+
+h5 {
+  font-size: 10px;
+  font-weight: bold;
+  color: #3366AA;
+  text-transform: uppercase;
+  margin-top: 25px;
+}
+
+h6 {
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+
+p.table-title {
+  font-weight: bold;
+  margin: 10px 0 5px 5px;
+}
+p     {
+	font-size: 12px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	line-height : 15px;
+}
+
+
+
+pre {
+FONT-SIZE: 12px; COLOR: #000000; 
+}
+
+
+table.header-footer {
+    border: 1px solid #999
+    }
+table.header-footer td {
+    border: none; 
+    background-color: #F0F8FF;  
+}
+
+
+div.tableheader {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  color: #999;
+  text-align: center;
+  margin: 15px 0 15px 0;
+}
+
+div.breadcrumb {
+  font-size: 10px;
+  color: #999;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+.navcontainer { width: 100%; }
+
+.navcontainer a {
+  display: block;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.navcontainer a:link {
+  color: #036;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navcontainer  a:visited {
+  color: #036;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navcontainer a:hover {
+  background-color: #fff;
+  color: #3366AA;
+  padding: 5px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.navdiv {
+  font-size: 10px;
+  line-height: 12px;
+  color: #036;
+  list-style-position: outside;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+

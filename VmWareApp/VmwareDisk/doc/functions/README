@@ -1,0 +1,35 @@
+Function documentation consists of sections:
+ * Function name [name]
+ * Parameters    [parameters]
+ * Return value  [return]
+ * Remarks       [remarks]
+ * Side effects  [sideeffects]
+ * Requirements  [requirements]
+ * Sample code   [example]
+
+Each section is declared in square brackets on its own line.  For example:
+[name]
+
+To include verbatim code, use [code] and [endcode] on its own line around
+the code to include.
+
+Parameters names and descriptions are separated by a hyphen:
+   hostName   - DNS name or IP address of remote host.  Use NULL to connect to
+                local host.
+
+List items can be included.  They start with an asterisk and can be
+nested based on indentation.  Example:
+
+* When you initialize the host object, you can also control some Vix
+  operations with the options parameter. The following option is supported:
+    * VIX_HOSTOPTION_USE_EVENT_PUMP . All asynchronous event processing
+      happens when the client calls Vix_PumpEvents(). The client is
+      responsible for regularly calling Vix_PumpEvents(), such as in
+      an event loop.
+
+To document internal VMware features that are not to be externally published,
+use [private] and [endprivate] on it's own line around the internal
+documentation.
+
+One or more blank lines indicates a new paragraph.
+

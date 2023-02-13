@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<link rel="stylesheet" href="../foundrydoc.css" type="text/css" charset="ISO-8859-1">
+</head>
+<body>
+<h1>Name</h1>
+<b>VixDiskLib_FreeErrorText</b>
+<h1>Description</h1>
+<pre>
+void
+VixDiskLib_FreeErrorText(char* vixErrorMsg);
+</pre>
+<p>
+This function frees the message buffer allocated by VixDiskLib_GetErrorText().
+<h1>Parameters</h1>
+<dl>
+<dt><i>vixErrorMsg</i></dt>
+<dd>
+VixDiskLib error string returned from a prior call to 
+     VixDiskLib_GetErrorText().
+</dd>
+</dl>
+<h1>Example</h1>
+<pre>
+   char* msg = VixDiskLib_GetErrorText(errCode, NULL);
+   errDescription = msg;
+   VixDiskLib_FreeErrorText(msg);
+</pre>
+</body>
+</html>
+<hr>Copyright (C) 2007-2017 VMware, Inc.  All rights reserved.
