@@ -11,6 +11,7 @@ typedef struct _NT_PROCESS_OFFSET
 	DWORD ActiveProcessLinksOffset;
 	DWORD ImageFileNameOffset;
 	DWORD UniqueProcessId;
+	DWORD VadRootOffset;
 
 }NT_PROCESS_OFFSET, *PNT_PROCESS_OFFSET;
 
@@ -33,11 +34,14 @@ typedef struct _VM_PROCESS_DATA
 	DWORD PEB32;      // WoW64 only
 	DWORD64 DestProcessEprocess;
 	ULONGLONG  DestProcessCr3;
+	DWORD64 VadRoot;
+
 }VM_PROCESS_DATA, *PVM_PROCESS_DATA;
 
 DWORD64 VMGetModuleBaseAddr(int ModuleID);
 VOID* VMGetExportsFunAddr(DWORD64 ModuleBaseAddr, CHAR* FunName, BOOLEAN IsFun);
 BOOLEAN VMFindVmProcessData(CHAR* ProcessName, VM_PROCESS_DATA* VmProcessData);
+NT_PROCESS_OFFSET* VMGetNtProcOffset();
 BOOLEAN VmWareThroughInit(DWORD VmWarePid);
 BOOLEAN VMWriteVmVirtualAddr(PVOID sourceBuffer, DWORD64 directoryTableBase,
                              DWORD64 virtualAddress, SIZE_T size);
@@ -47,9 +51,9 @@ BOOLEAN VMReadVmVirtualAddr(PVOID targetBuffer, DWORD64 directoryTableBase,
 BOOL VMWriteHostRegion(PVOID buffer, ULONG64 addr, SIZE_T size);
 BOOL VMReadHostRegion(PVOID buffer, ULONG64 addr, SIZE_T size);
 NT_PROCESS_DATA* VMGetNtKernelData();
-BOOLEAN VMTranslatePhyAddress(_In_ DWORD64 directoryTableBase,
+DWORD64 VMTranslatePhyAddress(_In_ DWORD64 directoryTableBase,
                               _In_ DWORD64 virtualAddress,
-                              _Out_ PDWORD64 phyAddress);
+	                          _Out_ PDWORD64 ppte);
 MEMORY_BASIC_INFORMATION* VMGetHostMemBasicInfo();
 HANDLE VMGetVmwareProcHandle();
 VM_PROCESS_DATA* VMGetVmwareDestProcData();

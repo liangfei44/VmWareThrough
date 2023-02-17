@@ -25,7 +25,9 @@
     <ClInclude Include="misc.h" />
     <ClInclude Include="pe.h" />
     <ClInclude Include="ShellCode.h" />
+    <ClInclude Include="vad.h" />
     <ClInclude Include="VmWareApp.h" />
+    <ClInclude Include="VmWareDisk.h" />
     <ClInclude Include="Win10X64Stage3.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -39,6 +41,7 @@
     <ClCompile Include="MemX64.c" />
     <ClCompile Include="misc.c" />
     <ClCompile Include="pe.c" />
+    <ClCompile Include="vad.c" />
     <ClCompile Include="VmWareApp.c" />
     <ClCompile Include="VmWareDisk.c" />
     <ClCompile Include="Win10X64Stage3.c">
@@ -114,12 +117,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

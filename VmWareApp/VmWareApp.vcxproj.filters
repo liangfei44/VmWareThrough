@@ -42,6 +42,12 @@
     <ClInclude Include="Win10X64Stage3.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="VmWareDisk.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="vad.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KernelModeInject.c">
@@ -69,6 +75,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="VmWareDisk.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vad.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
