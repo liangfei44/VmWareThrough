@@ -14,4 +14,6 @@ typedef enum VMM_PTE_TP {
 	VMM_PTE_TP_FILE_BACKED
 } VMM_PTE_TP, *PVMM_PTE_TP;
 
-VMM_PTE_TP MemX64TransitionPaged(_In_ DWORD64 va,_In_ DWORD64 pte, _In_ DWORD64 DirectoryTableBase, _Out_ PDWORD64 ppa);
+#define VM_FLAG_NOVAD  0x00000001  // ²»Ç¶Ì×VADÁË
+
+VMM_PTE_TP MemX64TransitionPaged(_In_ DWORD64 va, _In_ DWORD64 pte, _In_ DWORD64 DirectoryTableBase, _In_ DWORD64 Flags, _Out_ PDWORD64 ppa);

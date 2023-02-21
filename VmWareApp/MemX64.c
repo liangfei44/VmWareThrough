@@ -77,13 +77,15 @@ DWORD64 MemX64Prototype(_In_ DWORD64 pte,_In_ DWORD64 DirectoryTableBase)
 }
 
 //从虚拟内存读取“分页”页面
-VMM_PTE_TP MemX64TransitionPaged(_In_ DWORD64 va, _In_ DWORD64 pte, _In_ DWORD64 DirectoryTableBase, _Out_ PDWORD64 ppa)
+VMM_PTE_TP MemX64TransitionPaged(_In_ DWORD64 va, _In_ DWORD64 pte, _In_ DWORD64 DirectoryTableBase, _In_ DWORD64 Flags, _Out_ PDWORD64 ppa)
 {
 	DWORD PfNumber = 0;
 	DWORD PfOffset = 0;
 	DWORD PteTp = VMM_PTE_TP_NA;
 	do
 	{
+		//初始化
+		*ppa = 0;
 		/*
 		有效PTE(硬件PTE)
 		PTE设置了有效位，MMU就发挥了作用，并执行到物理地址的转换,这里就不会是分页内存
@@ -171,14 +173,20 @@ VMM_PTE_TP MemX64TransitionPaged(_In_ DWORD64 va, _In_ DWORD64 pte, _In_ DWORD64
 		如果 PTE 完全为 0，则表示应咨询 VAD。当指向 PTE 的 PDE 无效（即整个页表无效）时，这种情况似乎也是如此。在这种情况下，我们需要以与上述VAD原型PTE相同的方式检查VAD。
 		这种状态似乎与上述状态相同。*/
 
-		if (va && !MEM_IS_KERNEL_ADDR_X64(va) && (!pte || (PfOffset == 0xffffffff))) {
-			//目前暂未实现
-			PteTp = VMM_PTE_TP_PROTOTYPE;
-			VADFindVadByPte();
+		if (va && !MEM_IS_KERNEL_ADDR_X64(va) && (!pte || (PfOffset == 0xffffffff) && !(Flags & VM_FLAG_NOVAD))) {			
+			pte = VADFindVadPte(va);
+			if (!pte) {
+				break;
+			}
+			if (MEM_X64_PTE_IS_HARDWARE(pte)) {
+				PteTp = VMM_PTE_TP_HARDWARE;
+				*ppa = pte & 0x0000fffffffff000;
+				break;
+			}
+			PteTp= MemX64TransitionPaged(va, pte, DirectoryTableBase, Flags | VM_FLAG_NOVAD, ppa);
 			break;
 		}
 
-		//如果是内核地址,并且PTE为，则直接退出
 		if (!pte) {
 			break;
 		}

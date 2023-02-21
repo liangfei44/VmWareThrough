@@ -737,7 +737,7 @@ BOOLEAN VMReadPaged(PVOID buffer, DWORD64 DirectoryTableBase, DWORD64 va, DWORD6
 			break;
 		}
 
-		PteTp = MemX64TransitionPaged(va, pte, DirectoryTableBase, &ppa);
+		PteTp = MemX64TransitionPaged(va, pte, DirectoryTableBase,0, &ppa);
 		switch (PteTp)
 		{
 		case VMM_PTE_TP_HARDWARE:
